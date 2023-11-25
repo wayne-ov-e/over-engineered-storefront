@@ -7,11 +7,11 @@ export default {
   theme: {
     colors: {
       'warm-gray': '#DCD6D1',
-      'drizzle': 'A4A29E',
+      'drizzle': '#A4A29E',
       'black': '#000000',
       '286-c': '#0032A0',
-      'orange-016-c': 'FF5600',
-      'cloud-dancer': 'F1F0EC',
+      'orange-016-c': '#FF5600',
+      'cloud-dancer': '#F1F0EC',
     },
     spacing: {
       0: '0',
