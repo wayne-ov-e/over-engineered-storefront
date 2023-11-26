@@ -37,6 +37,9 @@
 
 html {
     background-color: var(--cloud-dancer);
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -46,25 +49,17 @@ body {
     background-color: var(--cloud-dancer);
 }
 
-p {
-    font-size: 12px;
-    line-height: 1;
-}
-
-a:hover {
-    text-decoration: none;
-}
 
 .logo {
     font-family: 'Neue Machina';
-    font-size: 24px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 0.708; /* 24px */
+    line-height: 0.7; /* 24px */
     letter-spacing: -0.24px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: never;
     font-feature-settings: 'ss05';
-    margin-top: 1px;
+    text-decoration: none !important;
 }

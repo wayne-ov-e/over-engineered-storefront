@@ -10,7 +10,7 @@ export function Footer({menu, shop}) {
   return (
     <footer className={styles.footer}>
       <div className={`${styles.footer_grid} items-center`}>
-        <p className="text-cloud-dancer col-span-2">© 2023 OVER-ENGINEERED</p>
+        <p className="text-cloud-dancer col-span-2 leading-none">© 2023 OVER-ENGINEERED</p>
         <FooterMenu menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
       </div>
     </footer>
