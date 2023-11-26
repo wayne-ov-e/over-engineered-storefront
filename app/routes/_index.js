@@ -8,7 +8,7 @@ export function meta() {
 export default function Index() {
   return (
     <div>
-      <h1>Hello from the home page!</h1>
+
     </div>
   );
 }
