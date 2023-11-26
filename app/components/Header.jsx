@@ -1,6 +1,7 @@
-import {Await, NavLink} from '@remix-run/react';
+import {Await, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import {useRootLoaderData} from '~/root';
+import styles from '~/styles/components/Header.module.css';
 
 /**
  * @param {HeaderProps}
@@ -8,16 +9,23 @@ import {useRootLoaderData} from '~/root';
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
-    <header className="header">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
-      </NavLink>
-      <HeaderMenu
-        menu={menu}
-        viewport="desktop"
-        primaryDomainUrl={header.shop.primaryDomain.url}
-      />
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+    <header className={`${styles.header} mb-25`}>
+      <div className={styles.header_cube_left}></div>
+      <div className={`${styles.header_grid} items-center`}>
+        <Link
+            className="logo"
+            prefetch="intent"
+            to="/"
+        >
+          {shop.name}
+        </Link>
+        <HeaderMenu
+          menu={menu}
+          viewport="desktop"
+          primaryDomainUrl={header.shop.primaryDomain.url}
+        />
+      </div>
+      <div className={styles.header_cube_right}></div>
     </header>
   );
 }
@@ -44,11 +52,10 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
     <nav className={className} role="navigation">
       {viewport === 'mobile' && (
         <NavLink
-          end
           onClick={closeAside}
           prefetch="intent"
-          style={activeLinkStyle}
           to="/"
+          end
         >
           Home
         </NavLink>
@@ -70,7 +77,6 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
             key={item.id}
             onClick={closeAside}
             prefetch="intent"
-            style={activeLinkStyle}
             to={url}
           >
             {item.title}
@@ -79,41 +85,6 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
       })}
     </nav>
   );
-}
-
-/**
- * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'>}
- */
-function HeaderCtas({isLoggedIn, cart}) {
-  return (
-    <nav className="header-ctas" role="navigation">
-      <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
-        {isLoggedIn ? 'Account' : 'Sign in'}
-      </NavLink>
-      <SearchToggle />
-      <CartToggle cart={cart} />
-    </nav>
-  );
-}
-
-function HeaderMenuMobileToggle() {
-  return (
-    <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
-      <h3>☰</h3>
-    </a>
-  );
-}
-
-function SearchToggle() {
-  return <a href="#search-aside">Search</a>;
-}
-
-/**
- * @param {{count: number}}
- */
-function CartBadge({count}) {
-  return <a href="#cart-aside">Cart {count}</a>;
 }
 
 /**
@@ -174,18 +145,18 @@ const FALLBACK_HEADER_MENU = {
   ],
 };
 
-/**
- * @param {{
- *   isActive: boolean;
- *   isPending: boolean;
- * }}
- */
-function activeLinkStyle({isActive, isPending}) {
-  return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'black',
-  };
-}
+// /**
+//  * @param {{
+//  *   isActive: boolean;
+//  *   isPending: boolean;
+//  * }}
+//  */
+// function activeLinkStyle({isActive, isPending}) {
+//   return {
+//     fontWeight: isActive ? 'bold' : undefined,
+//     color: isPending ? 'grey' : 'black',
+//   };
+// }
 
 /** @typedef {Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>} HeaderProps */
 /** @typedef {'desktop' | 'mobile'} Viewport */

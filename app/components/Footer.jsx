@@ -1,13 +1,18 @@
 import {NavLink} from '@remix-run/react';
 import {useRootLoaderData} from '~/root';
+import styles from '~/styles/components/Footer.module.css';
+
 
 /**
  * @param {FooterQuery & {shop: HeaderQuery['shop']}}
  */
 export function Footer({menu, shop}) {
   return (
-    <footer className="footer">
-      <FooterMenu menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
+    <footer className={styles.footer}>
+      <div className={`${styles.footer_grid} items-center`}>
+        <p className="text-cloud-dancer col-span-2">© 2023 OVER-ENGINEERED</p>
+        <FooterMenu menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
+      </div>
     </footer>
   );
 }
@@ -22,7 +27,7 @@ function FooterMenu({menu, primaryDomainUrl}) {
   const {publicStoreDomain} = useRootLoaderData();
 
   return (
-    <nav className="footer-menu" role="navigation">
+    <nav className={`${styles.footer_menu} col-start-6 col-span-2`} role="navigation">
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
         // if the url is internal, we strip the domain
