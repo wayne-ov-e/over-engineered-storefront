@@ -42,11 +42,33 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+@media only screen and (max-width: 1600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    html {
+        font-size: 12px;
+    }
+}
+
 body {
     font-family: 'NB International', sans-serif;
     font-style: normal;
     font-weight: 400;
     background-color: var(--cloud-dancer);
+}
+
+body::-webkit-scrollbar{
+    display: none;
 }
 
 .logo {

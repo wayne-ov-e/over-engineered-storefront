@@ -12,7 +12,19 @@ export function meta() {
 
 export default function Index() {
   return (
-    <div className={`${styles.main_grid} mt-[9.3rem]`}>
+  <div>
+    <div className={`${styles.main_grid}`}>
+      <div
+        className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
+      >
+        <img
+          src={landing}
+        />
+        <h3 className="mb-14 mt-2">DWOS_TRAY_01</h3>
+      </div>
+    </div>
+
+    <div className={`${styles.fixed_grid} mt-[9.3rem]`}>
       <h2>Under<br></br>Construction</h2>
 
       <div className="col-start-2">
@@ -25,18 +37,10 @@ export default function Index() {
         />
       </div>
 
-      <div
-        className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
-      >
-        <img
-          src={landing}
-        />
-        <h3 className="mb-8 mt-2">DWOS_TRAY_01</h3>
-      </div>
-
       <div className="col-start-6">
         <p><span className="align-super" style={{ fontSize: "smaller" }}>1</span> DWOS stands for Domestic Workspace Organization System, despite the name we encourage our products to be used even beyond the workspace.</p>
       </div>
     </div>
+  </div>
   );
 }
