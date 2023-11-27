@@ -10,14 +10,15 @@ export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
     <header className={`${styles.header}`}>
-      <div className={styles.header_cube_left}></div>
+      <div className={`${styles.header_cube_left} max-[900px]:hidden`}></div>
       <div className={`${styles.header_grid} items-center`}>
         <Link
             className="logo"
             prefetch="intent"
             to="/"
         >
-          {shop.name}
+          <span className="max-[900px]:hidden">{shop.name}</span>
+          <span className="min-[901px]:hidden">ov_e</span>
         </Link>
         <HeaderMenu
           menu={menu}
@@ -25,7 +26,7 @@ export function Header({header, isLoggedIn, cart}) {
           primaryDomainUrl={header.shop.primaryDomain.url}
         />
       </div>
-      <div className={styles.header_cube_right}></div>
+      <div className={`${styles.header_cube_right} max-[900px]:mr-4 max-[900px]:w-[1.68rem]`}></div>
     </header>
   );
 }

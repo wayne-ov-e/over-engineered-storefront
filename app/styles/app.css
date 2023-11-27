@@ -60,6 +60,12 @@ html {
     }
 }
 
+@media only screen and (max-width: 1200px) {
+    html {
+        font-size: 10px;
+    }
+}
+
 body {
     font-family: 'NB International', sans-serif;
     font-style: normal;
@@ -83,4 +89,8 @@ body::-webkit-scrollbar{
     font-smooth: never;
     font-feature-settings: 'ss05';
     text-decoration: none !important;
+
+    @media (max-width: 900px) {
+        font-size: 2.4rem;
+    }
 }

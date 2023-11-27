@@ -30,3 +30,20 @@
         margin-right: 2rem;
     }
 }
+
+@media only screen and (max-width: 900px) {
+    .footer {
+        height: 2rem;
+    }
+
+    .footer_grid {
+        display: flex;
+        margin-left: 1.6rem;
+        margin-right: 1.6rem;
+        justify-content: space-between;
+    }
+
+    .footer_menu a{
+        font-size: 1.2rem;
+    }
+}

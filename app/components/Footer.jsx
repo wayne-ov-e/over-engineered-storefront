@@ -10,7 +10,7 @@ export function Footer({menu, shop}) {
   return (
     <footer className={styles.footer}>
       <div className={`${styles.footer_grid} items-center`}>
-        <p className="text-cloud-dancer col-span-2 leading-none">© 2023 OVER-ENGINEERED</p>
+        <p className="text-cloud-dancer col-span-2 leading-none max-[900px]:text-[1.2rem]">© 2023 OVER-ENGINEERED</p>
         <FooterMenu menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
       </div>
     </footer>
@@ -27,7 +27,7 @@ function FooterMenu({menu, primaryDomainUrl}) {
   const {publicStoreDomain} = useRootLoaderData();
 
   return (
-    <nav className={`${styles.footer_menu} col-start-6 col-span-2`} role="navigation">
+    <nav className={`${styles.footer_menu} col-start-6 col-span-2 `} role="navigation">
       {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
         if (!item.url) return null;
         // if the url is internal, we strip the domain

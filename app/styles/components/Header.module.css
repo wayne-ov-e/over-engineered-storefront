@@ -40,3 +40,15 @@
         margin-right: 2rem;
     }
 }
+
+@media only screen and (max-width: 900px) {
+    .header {
+        padding-top: 2.4rem;
+        padding-bottom: 1.6rem;
+    }
+
+    .header_grid {
+        margin-left: 1.6rem;
+        margin-right: 1.6rem;
+    }
+}
