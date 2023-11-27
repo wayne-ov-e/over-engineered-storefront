@@ -7,7 +7,6 @@
     padding-bottom: 6.25rem;
     background-color: var(--cloud-dancer);
     z-index: 1000;
-    background-clip: content-box;
 }
 
 .header_cube_left {
