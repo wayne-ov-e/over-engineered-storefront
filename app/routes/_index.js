@@ -29,7 +29,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div className={`${styles.fixed_grid} mt-[9.3rem]`}>
+      <div className={`${styles.fixed_grid} mt-[9.302rem]`}>
         <h2>Under<br></br>Construction</h2>
 
         <div className="col-start-2">
