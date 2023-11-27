@@ -1,7 +1,8 @@
 import styles from '~/styles/routes/_index.module.css';
-import {Image} from '@shopify/hydrogen-react';
-import landing from '~/assets/images/DWOS_TRAY_01.webp';
+import highResImage from '~/assets/images/DWOS_TRAY_01.webp';
+import lowResImage from '~/assets/images/DWOS_TRAY_01_low-res.webp';
 import Button from '~/components/Button.jsx';
+import ProgressiveImage from '~/components/ProgressiveImage.jsx';
 
 export function meta() {
   return [
@@ -17,8 +18,10 @@ export default function Index() {
       <div
         className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
       >
-        <img
-          src={landing}
+        <ProgressiveImage
+          lowResSrc={lowResImage}
+          highResSrc={highResImage}
+          alt="Descriptive Alt Text"
         />
         <h3 className="mb-14 mt-2">DWOS_TRAY_01</h3>
       </div>
@@ -31,7 +34,7 @@ export default function Index() {
         <p>We are dedicated to delivering a distinctive and unparalleled online experience to you.</p>
         <p className="mt-2">In the meantime, we invite you to explore and purchase our products through our esteemed retail partner.</p>
         <Button
-          to=""
+          to="https://sortdays.com/"
           style="mt-8"
           text="Retail partner"
         />
