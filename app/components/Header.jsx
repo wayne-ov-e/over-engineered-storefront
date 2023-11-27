@@ -26,7 +26,7 @@ export function Header({header, isLoggedIn, cart}) {
           primaryDomainUrl={header.shop.primaryDomain.url}
         />
       </div>
-      <div className={`${styles.header_cube_right} max-[900px]:mr-4 max-[900px]:w-[1.68rem]`}></div>
+      <div className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`}></div>
     </header>
   );
 }
