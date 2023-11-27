@@ -4,6 +4,9 @@
     width: 100%;
     position: fixed;
     padding-top: 2rem;
+    padding-bottom: 6.25rem;
+    background-color: var(--cloud-dancer);
+    z-index: 1000;
 }
 
 .header_cube_left {
@@ -29,4 +32,11 @@
     width: 100%;
     margin-left: 4rem;
     margin-right: 4rem;
+}
+
+@media only screen and (max-width: 1440px) {
+    .header_grid {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
 }

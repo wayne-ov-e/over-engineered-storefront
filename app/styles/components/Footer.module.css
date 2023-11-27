@@ -22,3 +22,11 @@
     color: var(--cloud-dancer);
     font-size: 0.75rem;
 }
+
+
+@media only screen and (max-width: 1440px) {
+    .footer_grid {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}

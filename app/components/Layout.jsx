@@ -12,7 +12,7 @@ export function Layout({cart, children = null, footer, header, isLoggedIn}) {
   return (
     <>
       <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />
-      <main style={{ height: "calc(100vh - 9.3rem - 1.5rem)" }}>{children}</main>
+      <main className="pt-[9.3rem]">{children}</main>
       <Suspense>
         <Await resolve={footer}>
           {(footer) => <Footer menu={footer.menu} shop={header.shop} />}
