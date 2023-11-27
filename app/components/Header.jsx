@@ -9,7 +9,7 @@ import styles from '~/styles/components/Header.module.css';
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
-    <header className={`${styles.header} mb-25`}>
+    <header className={`${styles.header}`}>
       <div className={styles.header_cube_left}></div>
       <div className={`${styles.header_grid} items-center`}>
         <Link

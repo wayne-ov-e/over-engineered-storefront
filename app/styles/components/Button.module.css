@@ -1,0 +1,14 @@
+.button {
+    display: block;
+    font-size: 0.75rem;
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    background-color: var(--black);
+    color: var(--cloud-dancer);
+}
+
+.button:hover{
+    text-decoration: none;
+}

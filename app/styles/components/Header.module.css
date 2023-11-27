@@ -1,13 +1,14 @@
 /* Header.module.css */
 .header {
     display: flex;
-    position: relative;
-    padding-top: 32px;
+    width: 100%;
+    position: fixed;
+    padding-top: 2rem;
 }
 
 .header_cube_left {
     position: absolute;
-    background-color: #000000;
+    background-color: var(--black);
     width: 1.06rem;
     aspect-ratio: 1/1;
     left: 0;
@@ -15,7 +16,7 @@
 
 .header_cube_right {
     position: absolute;
-    background-color: #000000;
+    background-color: var(--black);
     width: 1.06rem;
     aspect-ratio: 1/1;
     right: 0;

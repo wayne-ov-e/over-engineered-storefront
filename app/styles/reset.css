@@ -21,13 +21,20 @@ h2 {
     line-height: 100%; /* 24px */
 }
 
+h3 {
+    font-family: 'Neue Machina', 'NB International', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 24px */
+}
+
 p {
     font-size: 0.75rem;
     line-height: 120%;
 }
 
 a {
-    color: #000;
     text-decoration: none;
 }
 

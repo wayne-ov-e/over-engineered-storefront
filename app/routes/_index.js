@@ -1,6 +1,7 @@
 import styles from '~/styles/routes/_index.module.css';
 import {Image} from '@shopify/hydrogen-react';
 import landing from '~/assets/images/DWOS_TRAY_01.webp';
+import Button from '~/components/Button.jsx';
 
 export function meta() {
   return [
@@ -11,21 +12,26 @@ export function meta() {
 
 export default function Index() {
   return (
-    <div className={styles.main_grid}>
+    <div className={`${styles.main_grid} mt-[9.3rem]`}>
       <h2>Under<br></br>Construction</h2>
 
       <div className="col-start-2">
         <p>We are dedicated to delivering a distinctive and unparalleled online experience to you.</p>
         <p className="mt-2">In the meantime, we invite you to explore and purchase our products through our esteemed retail partner.</p>
+        <Button
+          to=""
+          style="mt-8"
+          text="Retail partner"
+        />
       </div>
 
       <div
         className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
       >
         <img
-          className="mb-[3rem]"
           src={landing}
         />
+        <h3 className="mb-8 mt-2">DWOS_TRAY_01</h3>
       </div>
 
       <div className="col-start-6">
