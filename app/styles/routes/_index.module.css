@@ -2,9 +2,9 @@
 .main_grid {
     display: grid;
     grid-template-columns: repeat(8, 1fr); /* Creates 8 columns */
-    column-gap: 20px;
-    margin-left: 64px;
-    margin-right: 64px;
+    column-gap: 1.25rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
     height: 100%;
 }
 
