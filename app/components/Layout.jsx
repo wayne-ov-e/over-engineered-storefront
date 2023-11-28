@@ -9,15 +9,13 @@ import {Header, HeaderMenu} from '~/components/Header';
 const layoutVariants = {
   initial: (custom)=>({
     opacity: 0,
-    y: custom * 10,
   }),
   animate: (custom)=>({
     opacity: 1,
-    y: 0,
     transition: {
       type: 'tween',
       ease: 'easeInOut',
-      delay: custom * 0.3,
+      delay: custom * 0.5,
       duration: 0.5,
     },
   }),
