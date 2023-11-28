@@ -17,12 +17,16 @@ export default function ProgressiveImage({ lowResSrc, highResSrc, alt }) {
       <img
         src={lowResSrc}
         alt={alt}
+        width="100%"
+        height="auto"
         style={{ display: highResImageLoaded ? 'none' : 'block' }}
       />
       {highResImageLoaded && (
         <img
           src={highResSrc}
           alt={alt}
+          width="100%"
+          height="auto"
           style={{ display: 'block' }}
         />
       )}

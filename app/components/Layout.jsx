@@ -1,9 +1,36 @@
 import {Await} from '@remix-run/react';
 import {Suspense} from 'react';
+import { motion } from 'framer-motion';
 import {Aside} from '~/components/Aside';
 import {Footer} from '~/components/Footer';
 import {Header, HeaderMenu} from '~/components/Header';
 // import {CartMain} from '~/components/Cart';
+
+const layoutVariants = {
+  initial: (custom)=>({
+    opacity: 0,
+    y: custom * 100,
+  }),
+  animate: (custom)=>({
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+      delay: custom * 0.3,
+      duration: 0.5,
+    },
+  }),
+  exit: {
+    opacity: 0,
+    transition: {
+      type: 'tween',
+      ease: 'easeInOut',
+    },
+  }
+};
+
+const MotionHeader = motion(Header);
 
 /**
  * @param {LayoutProps}
@@ -11,11 +38,43 @@ import {Header, HeaderMenu} from '~/components/Header';
 export function Layout({cart, children = null, footer, header, isLoggedIn}) {
   return (
     <>
-      <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />
-      <main className="pt-[9.302rem] max-[900px]:pt-[5.68rem]">{children}</main>
+      <motion.div
+        variants={layoutVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        custom={0}
+      >
+        <Header
+          header={header}
+          cart={cart}
+          isLoggedIn={isLoggedIn}
+        />
+      </motion.div>
+
+      <motion.main
+          className="pt-[9.302rem] max-[900px]:pt-[5.68rem]"
+          variants={layoutVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          custom={1}
+      >
+        {children}
+      </motion.main>
       <Suspense>
         <Await resolve={footer}>
-          {(footer) => <Footer menu={footer.menu} shop={header.shop} />}
+          {(footer) =>
+            <motion.div
+              variants={layoutVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              custom={0}
+            >
+              <Footer menu={footer.menu} shop={header.shop} />
+            </motion.div>
+          }
         </Await>
       </Suspense>
     </>
