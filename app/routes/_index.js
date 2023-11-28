@@ -43,7 +43,7 @@ export default function Index() {
         </div>
 
         <div className="col-start-6">
-          <p><span className="align-super" style={{ fontSize: "smaller" }}>1</span> DWOS stands for Domestic Workspace Organization System, despite the name we encourage our products to be used even beyond the workspace.</p>
+          <p><span className="align-super" style={{ fontSize: "smaller" }}>1</span> DWOS stands for Domestic Workspace Organization System, despite the name we encourage our products to be used beyond the workspace.</p>
         </div>
       </div>
     </div>

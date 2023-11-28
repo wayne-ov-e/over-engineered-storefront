@@ -9,7 +9,7 @@ import {Header, HeaderMenu} from '~/components/Header';
 const layoutVariants = {
   initial: (custom)=>({
     opacity: 0,
-    y: custom * 100,
+    y: custom * 10,
   }),
   animate: (custom)=>({
     opacity: 1,
