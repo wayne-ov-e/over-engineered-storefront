@@ -6,11 +6,12 @@ import styles from '~/styles/components/Footer.module.css';
 /**
  * @param {FooterQuery & {shop: HeaderQuery['shop']}}
  */
-export function Footer({menu, shop}) {
+export function Footer({menu, secondaryMenu, shop}) {
   return (
     <footer className={styles.footer}>
       <div className={`${styles.footer_grid} items-center`}>
         <p className="text-cloud-dancer col-span-2 leading-none max-[900px]:text-[1.2rem]">© 2023 OVER-ENGINEERED</p>
+        <SecondaryFooterMenu menu={secondaryMenu} primaryDomainUrl={shop.primaryDomain.url} />
         <FooterMenu menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
       </div>
     </footer>
@@ -28,7 +29,7 @@ function FooterMenu({menu, primaryDomainUrl}) {
 
   return (
     <nav className={`${styles.footer_menu} col-start-6 col-span-2 `} role="navigation">
-      {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
+      {menu.items.map((item) => {
         if (!item.url) return null;
         // if the url is internal, we strip the domain
         const url =
@@ -58,6 +59,51 @@ function FooterMenu({menu, primaryDomainUrl}) {
   );
 }
 
+/**
+ * @param {{
+ *   menu: SecondaryFooterMenu['menu'];
+ *   primaryDomainUrl: HeaderQuery['shop']['primaryDomain']['url'];
+ * }}
+ */
+function SecondaryFooterMenu({menu, primaryDomainUrl}) {
+  const {publicStoreDomain} = useRootLoaderData();
+
+  console.log(menu);
+
+  return (
+    <nav className={`${styles.footer_menu} col-start-3 col-span-2 `} role="navigation">
+      {menu.items.map((item) => {
+        if (!item.url) return null;
+        // if the url is internal, we strip the domain
+        const url =
+          item.url.includes('myshopify.com') ||
+          item.url.includes(publicStoreDomain) ||
+          item.url.includes(primaryDomainUrl)
+            ? new URL(item.url).pathname
+            : item.url;
+        const isExternal = !url.startsWith('/');
+        return isExternal ? (
+          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank" className={`mr-3`}>
+            {item.title}
+          </a>
+        ) : (
+          <NavLink
+            end
+            key={item.id}
+            prefetch="intent"
+            style={activeLinkStyle}
+            to={url}
+            className={`mr-3`}
+          >
+            <span className="font-normal">{item.title}</span>
+          </NavLink>
+        );
+      })}
+    </nav>
+  );
+}
+
+/**
 const FALLBACK_FOOTER_MENU = {
   id: 'gid://shopify/Menu/199655620664',
   items: [
@@ -99,6 +145,7 @@ const FALLBACK_FOOTER_MENU = {
     },
   ],
 };
+*/
 
 /**
  * @param {{

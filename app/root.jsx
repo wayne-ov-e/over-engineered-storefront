@@ -88,6 +88,14 @@ export async function loader({context}) {
     },
   });
 
+  // defer the secondary footer query (below the fold)
+  const secondaryFooterPromise = storefront.query(SECONDARY_FOOTER_QUERY, {
+    cache: storefront.CacheLong(),
+    variables: {
+      secondaryFooterMenuHandle: 'secondary-footer', // Adjust to your footer menu handle
+    },
+  });
+
   // await the header query (above the fold)
   const headerPromise = storefront.query(HEADER_QUERY, {
     cache: storefront.CacheLong(),
@@ -100,6 +108,7 @@ export async function loader({context}) {
     {
       cart: cartPromise,
       footer: footerPromise,
+      secondaryFooter: await secondaryFooterPromise,
       header: await headerPromise,
       isLoggedIn,
       publicStoreDomain,
@@ -274,6 +283,19 @@ const FOOTER_QUERY = `#graphql
     $language: LanguageCode
   ) @inContext(language: $language, country: $country) {
     menu(handle: $footerMenuHandle) {
+      ...Menu
+    }
+  }
+  ${MENU_FRAGMENT}
+`;
+
+const SECONDARY_FOOTER_QUERY = `#graphql
+  query SecondaryFooter(
+    $country: CountryCode
+    $secondaryFooterMenuHandle: String!
+    $language: LanguageCode
+  ) @inContext(language: $language, country: $country) {
+    menu(handle: $secondaryFooterMenuHandle) {
       ...Menu
     }
   }

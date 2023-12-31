@@ -33,7 +33,7 @@ const MotionHeader = motion(Header);
 /**
  * @param {LayoutProps}
  */
-export function Layout({cart, children = null, footer, header, isLoggedIn}) {
+export function Layout({cart, children = null, footer, secondaryFooter, header, isLoggedIn}) {
   return (
     <>
       <motion.div
@@ -70,7 +70,7 @@ export function Layout({cart, children = null, footer, header, isLoggedIn}) {
               exit="exit"
               custom={0}
             >
-              <Footer menu={footer.menu} shop={header.shop} />
+              <Footer menu={footer.menu} secondaryMenu={secondaryFooter.menu} shop={header.shop} />
             </motion.div>
           }
         </Await>
@@ -109,4 +109,5 @@ export function Layout({cart, children = null, footer, header, isLoggedIn}) {
 
 /** @typedef {import('storefrontapi.generated').CartApiQueryFragment} CartApiQueryFragment */
 /** @typedef {import('storefrontapi.generated').FooterQuery} FooterQuery */
+/** @typedef {import('storefrontapi.generated').FooterQuery} SecondaryFooterQuery */
 /** @typedef {import('storefrontapi.generated').HeaderQuery} HeaderQuery */
