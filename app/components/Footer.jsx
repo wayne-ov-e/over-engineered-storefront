@@ -68,8 +68,6 @@ function FooterMenu({menu, primaryDomainUrl}) {
 function SecondaryFooterMenu({menu, primaryDomainUrl}) {
   const {publicStoreDomain} = useRootLoaderData();
 
-  console.log(menu);
-
   return (
     <nav className={`${styles.footer_menu} col-start-3 col-span-2 `} role="navigation">
       {menu.items.map((item) => {

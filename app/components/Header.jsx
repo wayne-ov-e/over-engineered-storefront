@@ -1,4 +1,4 @@
-import {Await, Link} from '@remix-run/react';
+import {Await, Link, NavLink} from '@remix-run/react';
 import {Suspense} from 'react';
 import {useRootLoaderData} from '~/root';
 import styles from '~/styles/components/Header.module.css';
@@ -40,7 +40,7 @@ export function Header({header, isLoggedIn, cart}) {
  */
 export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
   const {publicStoreDomain} = useRootLoaderData();
-  const className = `header-menu-${viewport}`;
+  const className = `col-start-3 col-span-2 flex`;
 
   function closeAside(event) {
     if (viewport === 'mobile') {
@@ -61,7 +61,7 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
           Home
         </NavLink>
       )}
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
+      {menu.items.map((item) => {
         if (!item.url) return null;
 
         // if the url is internal, we strip the domain
@@ -73,14 +73,17 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
             : item.url;
         return (
           <NavLink
-            className="header-menu-item"
+            className={`${styles.header_menu_item} mr-[1.5rem]`}
             end
             key={item.id}
             onClick={closeAside}
             prefetch="intent"
             to={url}
           >
-            {item.title}
+            <div className={`relative ${item.title == 'Products' && 'mr-[0.5rem]'} `}>
+              {item.title}
+              {item.title == 'Products' && (<div className="absolute text-[0.8rem] top-[-0.8rem] right-[-0.5rem]">2</div>)}
+            </div>
           </NavLink>
         );
       })}
@@ -104,47 +107,6 @@ function CartToggle({cart}) {
   );
 }
 
-const FALLBACK_HEADER_MENU = {
-  id: 'gid://shopify/Menu/199655587896',
-  items: [
-    {
-      id: 'gid://shopify/MenuItem/461609500728',
-      resourceId: null,
-      tags: [],
-      title: 'Collections',
-      type: 'HTTP',
-      url: '/collections',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609533496',
-      resourceId: null,
-      tags: [],
-      title: 'Blog',
-      type: 'HTTP',
-      url: '/blogs/journal',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609566264',
-      resourceId: null,
-      tags: [],
-      title: 'Policies',
-      type: 'HTTP',
-      url: '/policies',
-      items: [],
-    },
-    {
-      id: 'gid://shopify/MenuItem/461609599032',
-      resourceId: 'gid://shopify/Page/92591030328',
-      tags: [],
-      title: 'About',
-      type: 'PAGE',
-      url: '/pages/about',
-      items: [],
-    },
-  ],
-};
 
 // /**
 //  * @param {{

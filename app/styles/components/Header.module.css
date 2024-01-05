@@ -34,6 +34,13 @@
     margin-right: 4rem;
 }
 
+.header_menu_item {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 70%; /* 24px */
+}
+
 @media only screen and (max-width: 1440px) {
     .header_grid {
         margin-left: 2rem;
