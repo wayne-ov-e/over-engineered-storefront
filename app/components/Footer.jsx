@@ -40,7 +40,7 @@ function FooterMenu({menu, primaryDomainUrl}) {
             : item.url;
         const isExternal = !url.startsWith('/');
         return isExternal ? (
-          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank">
+          <a href={url} key={item.id} rel="noopener noreferrer" target="_blank" className={`mr-3`}>
             {item.title}
           </a>
         ) : (
@@ -48,8 +48,8 @@ function FooterMenu({menu, primaryDomainUrl}) {
             end
             key={item.id}
             prefetch="intent"
-            style={activeLinkStyle}
             to={url}
+            className={`mr-3`}
           >
             {item.title}
           </NavLink>
@@ -89,7 +89,6 @@ function FooterMenu({menu, primaryDomainUrl}) {
             end
             key={item.id}
             prefetch="intent"
-            style={activeLinkStyle}
             to={url}
             className={`mr-3`}
           >
@@ -165,12 +164,12 @@ const FALLBACK_FOOTER_MENU = {
  *   isPending: boolean;
  * }}
  */
-function activeLinkStyle({isActive, isPending}) {
-  return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'white',
-  };
-}
+// function activeLinkStyle({isActive, isPending}) {
+//   return {
+//     fontWeight: isActive ? 'bold' : undefined,
+//     color: isPending ? 'grey' : 'white',
+//   };
+// }
 
 /** @typedef {import('storefrontapi.generated').FooterQuery} FooterQuery */
 /** @typedef {import('storefrontapi.generated').HeaderQuery} HeaderQuery */

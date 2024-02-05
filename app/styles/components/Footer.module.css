@@ -19,7 +19,7 @@
 }
 
 .footer_menu a{
-    color: var(--cloud-dancer);
+    color: var(--cloud-dancer) !important;
     font-size: 0.75rem;
 }
 
