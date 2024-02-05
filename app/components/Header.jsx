@@ -40,7 +40,7 @@ export function Header({header, isLoggedIn, cart}) {
  */
 export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
   const {publicStoreDomain} = useRootLoaderData();
-  const className = `col-start-3 col-span-2 flex`;
+  const className = `col-start-3 col-span-2 flex max-[900px]:hidden`;
 
   function closeAside(event) {
     if (viewport === 'mobile') {

@@ -1,7 +1,6 @@
-import {NavLink} from '@remix-run/react';
+import {NavLink, Link} from '@remix-run/react';
 import {useRootLoaderData} from '~/root';
 import styles from '~/styles/components/Footer.module.css';
-
 
 /**
  * @param {FooterQuery & {shop: HeaderQuery['shop']}}
@@ -13,6 +12,7 @@ export function Footer({menu, secondaryMenu, shop}) {
         <p className="text-cloud-dancer col-span-2 leading-none max-[900px]:text-[1.2rem]">© 2023 OVER-ENGINEERED</p>
         <SecondaryFooterMenu menu={secondaryMenu} primaryDomainUrl={shop.primaryDomain.url} />
         <FooterMenu menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
+        <MobileFooter menu={menu} primaryDomainUrl={shop.primaryDomain.url} />
       </div>
     </footer>
   );
@@ -28,7 +28,7 @@ function FooterMenu({menu, primaryDomainUrl}) {
   const {publicStoreDomain} = useRootLoaderData();
 
   return (
-    <nav className={`${styles.footer_menu} col-start-6 col-span-2 `} role="navigation">
+    <nav className={`${styles.footer_menu} col-start-6 col-span-2 max-[900px]:hidden`} role="navigation">
       {menu.items.map((item) => {
         if (!item.url) return null;
         // if the url is internal, we strip the domain
@@ -65,11 +65,11 @@ function FooterMenu({menu, primaryDomainUrl}) {
  *   primaryDomainUrl: HeaderQuery['shop']['primaryDomain']['url'];
  * }}
  */
-function SecondaryFooterMenu({menu, primaryDomainUrl}) {
+ function SecondaryFooterMenu({menu, primaryDomainUrl}) {
   const {publicStoreDomain} = useRootLoaderData();
 
   return (
-    <nav className={`${styles.footer_menu} col-start-3 col-span-2 `} role="navigation">
+    <nav className={`${styles.footer_menu} col-start-3 col-span-2 max-[900px]:hidden`} role="navigation">
       {menu.items.map((item) => {
         if (!item.url) return null;
         // if the url is internal, we strip the domain
@@ -100,6 +100,20 @@ function SecondaryFooterMenu({menu, primaryDomainUrl}) {
     </nav>
   );
 }
+
+/**
+ * @param {{
+ *   menu: SecondaryFooterMenu['menu'];
+ *   primaryDomainUrl: HeaderQuery['shop']['primaryDomain']['url'];
+ * }}
+ */
+ function MobileFooter({menu, primaryDomainUrl}) {
+   const {publicStoreDomain} = useRootLoaderData();
+
+   return (
+     <Link className="text-cloud-dancer leading-none max-[900px]:text-[1.2rem] min-[901px]:hidden">More+</Link>
+   );
+ }
 
 /**
 const FALLBACK_FOOTER_MENU = {
