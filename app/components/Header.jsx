@@ -20,11 +20,11 @@ export function Header({header, isLoggedIn, cart}) {
           <span className="max-[900px]:hidden">{shop.name}</span>
           <span className="min-[901px]:hidden">ov_e</span>
         </Link>
-        <HeaderMenu
+        {/* <HeaderMenu
           menu={menu}
           viewport="desktop"
           primaryDomainUrl={header.shop.primaryDomain.url}
-        />
+        /> */}
       </div>
       <div className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`}></div>
     </header>
