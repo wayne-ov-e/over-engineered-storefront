@@ -30,16 +30,11 @@ export default function Index() {
       </div>
 
       <div className={`${styles.fixed_grid} mt-[9.302rem]`}>
-        <h2>Under<br></br>Construction</h2>
+        <h2>New release</h2>
 
         <div className="col-start-2">
-          <p>We are dedicated to delivering a distinctive and unparalleled online experience to you.</p>
-          <p className="mt-2">In the meantime, we invite you to explore and purchase our products through our esteemed retail partner.</p>
-          <Button
-            to="https://sortdays.com/"
-            style="mt-8"
-            text="Retail partner"
-          />
+          <p>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
+          <p className="mt-2">The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
         </div>
 
         <div className="col-start-6">
