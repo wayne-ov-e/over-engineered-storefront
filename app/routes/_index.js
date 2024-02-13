@@ -34,7 +34,8 @@ export default function Index() {
 
         <div className="col-start-2">
           <p>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
-          <p className="mt-2">The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
+          <p className="mt-2">Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools.</p>
+          <p className="mt-16">We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
         </div>
 
         <div className="col-start-6">
