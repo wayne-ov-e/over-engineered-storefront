@@ -1,31 +1,31 @@
-import {Await} from '@remix-run/react';
-import {Suspense} from 'react';
+import { Await } from '@remix-run/react';
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
-import {Aside} from '~/components/Aside';
-import {Footer} from '~/components/Footer';
-import {Header, HeaderMenu} from '~/components/Header';
+import { Aside } from '~/components/Aside';
+import { Footer } from '~/components/Footer';
+import { Header, HeaderMenu } from '~/components/Header';
 // import {CartMain} from '~/components/Cart';
 
 const layoutVariants = {
-  initial: (custom)=>({
-    opacity: 0,
-  }),
-  animate: (custom)=>({
-    opacity: 1,
-    transition: {
-      type: 'tween',
-      ease: 'easeInOut',
-      delay: custom * 0.5,
-      duration: 0.5,
-    },
-  }),
-  exit: {
-    opacity: 0,
-    transition: {
-      type: 'tween',
-      ease: 'easeInOut',
-    },
-  }
+	initial: (custom) => ({
+		opacity: 0,
+	}),
+	animate: (custom) => ({
+		opacity: 1,
+		transition: {
+			type: 'tween',
+			ease: 'easeInOut',
+			delay: custom * 0.5,
+			duration: 0.5,
+		},
+	}),
+	exit: {
+		opacity: 0,
+		transition: {
+			type: 'tween',
+			ease: 'easeInOut',
+		},
+	}
 };
 
 const MotionHeader = motion(Header);
@@ -33,50 +33,50 @@ const MotionHeader = motion(Header);
 /**
  * @param {LayoutProps}
  */
-export function Layout({cart, children = null, footer, secondaryFooter, header, isLoggedIn}) {
-  return (
-    <>
-      <motion.div
-        variants={layoutVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        custom={0}
-      >
-        <Header
-          header={header}
-          cart={cart}
-          isLoggedIn={isLoggedIn}
-        />
-      </motion.div>
+export function Layout({ cart, children = null, footer, secondaryFooter, header, isLoggedIn }) {
+	return (
+		<>
+			<motion.div
+				variants={layoutVariants}
+				initial="initial"
+				animate="animate"
+				exit="exit"
+				custom={0}
+			>
+				<Header
+					header={header}
+					cart={cart}
+					isLoggedIn={isLoggedIn}
+				/>
+			</motion.div>
 
-      <motion.main
-          className="pt-[9.302rem] max-[900px]:pt-[5.68rem]"
-          variants={layoutVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          custom={1}
-      >
-        {children}
-      </motion.main>
-      <Suspense>
-        <Await resolve={footer}>
-          {(footer) =>
-            <motion.div
-              variants={layoutVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              custom={0}
-            >
-              <Footer menu={footer.menu} secondaryMenu={secondaryFooter.menu} shop={header.shop} />
-            </motion.div>
-          }
-        </Await>
-      </Suspense>
-    </>
-  );
+			<motion.main
+				className="pt-[9.302rem] max-[900px]:pt-[5.68rem]"
+				variants={layoutVariants}
+				initial="initial"
+				animate="animate"
+				exit="exit"
+				custom={1}
+			>
+				{children}
+			</motion.main>
+			<Suspense>
+				<Await resolve={footer}>
+					{(footer) =>
+						<motion.div
+							variants={layoutVariants}
+							initial="initial"
+							animate="animate"
+							exit="exit"
+							custom={0}
+						>
+							<Footer menu={footer.menu} secondaryMenu={secondaryFooter.menu} shop={header.shop} />
+						</motion.div>
+					}
+				</Await>
+			</Suspense>
+		</>
+	);
 }
 
 // /**
