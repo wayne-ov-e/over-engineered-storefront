@@ -25,7 +25,7 @@ export default function Index() {
                             highResSrc={highResImage}
                             alt="Descriptive Alt Text"
                         />
-                        <h3 className="mb-14 mt-2">DWOS_TRAY_01</h3>
+                        <h4 className="mb-14 mt-2">DWOS_TRAY_01</h4>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@ export default function Index() {
                     alt="Descriptive Alt Text"
                 />
 
-                <h3 className="mt-[0.4rem] mb-[3.2rem] text-[1.2rem]">DWOS_TRAY_01</h3>
+                <h4 className="mt-[0.4rem] mb-[3.2rem] text-[1.2rem]">DWOS_TRAY_01</h4>
 
                 <p className="mb-[3.2rem]">We are dedicated to delivering a distinctive and unparalleled online experience to you. In the meantime, we invite you to explore and purchase our products through our esteemed retail partner.</p>
 

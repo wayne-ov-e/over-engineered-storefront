@@ -18,7 +18,8 @@ h2 {
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 100%; /* 24px */
+    line-height: 100%;
+    /* 24px */
 
     @media (max-width: 900px) {
         font-size: 1.6rem;
@@ -26,11 +27,24 @@ h2 {
 }
 
 h3 {
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 24px */
+
+    @media (max-width: 900px) {
+        font-size: 1.2rem;
+    }
+}
+
+h4 {
     font-family: 'Neue Machina', 'NB International', sans-serif;
     font-size: 0.75rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 100%; /* 24px */
+    line-height: 100%;
+    /* 24px */
 
     @media (max-width: 900px) {
         font-size: 1.2rem;
@@ -73,6 +87,7 @@ body {
 
 section {
     padding: 1rem 0;
+
     @media (min-width: 768px) {
         padding: 2rem 0;
     }
@@ -87,6 +102,7 @@ fieldset {
 
 form {
     max-width: 100%;
+
     @media (min-width: 768px) {
         max-width: 400px;
     }
