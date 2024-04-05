@@ -2,7 +2,7 @@ import { Await, Link, NavLink } from '@remix-run/react';
 import { Suspense } from 'react';
 import { useRootLoaderData } from '~/root';
 import styles from '~/styles/components/Header.module.css';
-import { NavigationMenu } from './NavigationMenu';
+import NavigationMenu from './NavigationMenu';
 
 /**
  * @param {HeaderProps}
