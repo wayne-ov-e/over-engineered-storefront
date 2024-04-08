@@ -104,12 +104,17 @@ export async function loader({ context }) {
         },
     });
 
+    const productListPromise = storefront.query(PRODUCT_LIST_QUERY, {
+        cache: storefront.CacheLong(),
+    });
+
     return defer(
         {
             cart: cartPromise,
-            footer: footerPromise,
+            footer: await footerPromise,
             secondaryFooter: await secondaryFooterPromise,
             header: await headerPromise,
+            productList: await productListPromise,
             isLoggedIn,
             publicStoreDomain,
         },
@@ -300,6 +305,28 @@ const SECONDARY_FOOTER_QUERY = `#graphql
     }
   }
   ${MENU_FRAGMENT}
+`;
+
+const PRODUCT_LIST_QUERY = `#graphql
+    query Products {
+        products(first: 3) {
+            nodes {
+                id
+                title
+                handle
+                description
+                productYear: metafield(namespace: "custom", key: "product_year") {
+                    value
+                }
+                productSystem: metafield(namespace: "custom", key: "product_system") {
+                    value
+                }
+                shortDescription: metafield(namespace: "custom", key: "short_description") {
+                    value
+                }
+            }
+        }
+    }
 `;
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
