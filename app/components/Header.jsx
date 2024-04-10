@@ -1,5 +1,5 @@
 import { Await, Link, NavLink } from '@remix-run/react';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { useRootLoaderData } from '~/root';
 import styles from '~/styles/components/Header.module.css';
 import NavigationMenu from './NavigationMenu';
@@ -8,9 +8,22 @@ import NavigationMenu from './NavigationMenu';
  * @param {HeaderProps}
  */
 export function Header({ header, isLoggedIn, cart }) {
+    const [navOpen, setNavOpen] = useState(false);
     const { shop, menu } = header;
+
+    function closeNavigationMenu() {
+        if (!navOpen) {
+            return;
+        }
+
+        setNavOpen(false);
+    }
+
     return (
-        <header className={`${styles.header}`}>
+        <header
+            className={`${styles.header}`}
+            onPointerLeave={closeNavigationMenu}
+        >
             <div className={`${styles.header_cube_left} max-[900px]:hidden`}></div>
             <div className={`${styles.header_grid} items-center`}>
                 <Link
@@ -23,13 +36,18 @@ export function Header({ header, isLoggedIn, cart }) {
                 </Link>
                 <HeaderMenu
                     menu={menu}
+                    navOpen={navOpen}
+                    setNavOpen={setNavOpen}
                     viewport="desktop"
                     primaryDomainUrl={header.shop.primaryDomain.url}
                 />
             </div>
             <div className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`}></div>
 
-            <NavigationMenu />
+            <NavigationMenu
+                navOpen={navOpen}
+                setNavOpen={setNavOpen}
+            />
         </header>
     );
 }
@@ -41,7 +59,7 @@ export function Header({ header, isLoggedIn, cart }) {
  *   viewport: Viewport;
  * }}
  */
-export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
+export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOpen }) {
     const { publicStoreDomain } = useRootLoaderData();
     const className = `col-start-3 col-span-2 flex max-[900px]:hidden`;
 
@@ -50,6 +68,14 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
             event.preventDefault();
             window.location.href = event.currentTarget.href;
         }
+    }
+
+    function openNavigationMenu() {
+        if (navOpen) {
+            return;
+        }
+
+        setNavOpen(true);
     }
 
     return (
@@ -79,7 +105,8 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport }) {
                         className={`${styles.header_menu_item} mr-[1.5rem]`}
                         end
                         key={item.id}
-                        onClick={closeAside}
+                        // onPointerEnter={item.title == 'Products' ? openNavigationMenu : undefined}
+                        onPointerDown={item.title == 'Products' ? openNavigationMenu : undefined}
                         prefetch="intent"
                         to={url}
                     >

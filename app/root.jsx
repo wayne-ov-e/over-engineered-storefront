@@ -324,6 +324,9 @@ const PRODUCT_LIST_QUERY = `#graphql
                 shortDescription: metafield(namespace: "custom", key: "short_description") {
                     value
                 }
+                productionStage: metafield(namespace: "custom", key: "production_stage") {
+                    value
+                }
             }
         }
     }
