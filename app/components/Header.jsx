@@ -27,7 +27,7 @@ export function Header({ header, isLoggedIn, cart }) {
             color: navOpen ? '#F1F0EC' : '#000',
             transition: {
                 duration: 0.3,
-                ease: [0.2, 0.4, 0.8, 0.4],
+                ease: [0.8, 0.1, 0, 0.8],
             }
         },
     }
@@ -37,7 +37,7 @@ export function Header({ header, isLoggedIn, cart }) {
             backgroundColor: navOpen ? '#F1F0EC' : '#000',
             transition: {
                 duration: 0.3,
-                ease: [0.2, 0.4, 0.8, 0.4],
+                ease: [0.8, 0.1, 0, 0.8],
             }
         },
     }

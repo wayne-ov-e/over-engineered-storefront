@@ -9,8 +9,8 @@ export default function NavigationMenu({ navOpen, products }) {
         animate: {
             scaleY: 1,
             transition: {
-                duration: 0.3,
-                ease: [0.2, 0.4, 0.8, 0.4],
+                duration: 0.4,
+                ease: [0.8, 0.1, 0, 0.8],
             }
         },
         exit: {
@@ -25,43 +25,35 @@ export default function NavigationMenu({ navOpen, products }) {
     const productLinkMotion = {
         initial: {
             opacity: 0,
-            transition: {
-                duration: 0.1,
-                ease: [0.2, 0.4, 0.75, 0.3],
-            }
         },
         animate: {
             opacity: 1,
             transition: {
-                duration: 0.5,
-                ease: [0.2, 0.4, 0.75, 0.3],
+                duration: 0.2,
+                ease: [0.6, 0.1, 1, 0.5],
             }
         },
         exit: {
             opacity: 0,
             transition: {
-                duration: 0,
+                duration: 0.1,
             }
         }
     }
 
     const containerVars = {
         initial: {
-            transition: {
-                staggerChildren: 0.1,
-                staggerDirection: -1,
-            }
         },
         animate: {
             transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.15,
+                delayChildren: 0.1,
+                staggerChildren: 0.05,
                 staggerDirection: 1,
             }
         },
         exit: {
             transition: {
-                duration: 0.1,
+                staggerDirection: -1,
             }
         }
     }
@@ -81,9 +73,6 @@ export default function NavigationMenu({ navOpen, products }) {
                             <div className={`overflow-hidden mb-[0.625rem]`}>
                                 <motion.div
                                     variants={productLinkMotion}
-                                    initial='initial'
-                                    animate='animate'
-                                    exit='exit'
                                     className={`${styles.table_name_row}`}
                                 >
                                     <h3 className='translate-y-[0.15rem]'>Unique Identifier</h3>
