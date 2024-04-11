@@ -1,8 +1,9 @@
-import { Await, Link, NavLink } from '@remix-run/react';
+import { Await, Link, NavLink, useLoaderData } from '@remix-run/react';
 import { Suspense, useState } from 'react';
 import { useRootLoaderData } from '~/root';
 import styles from '~/styles/components/Header.module.css';
 import NavigationMenu from './NavigationMenu';
+import { motion, AnimatePresence } from 'framer-motion';
 
 /**
  * @param {HeaderProps}
@@ -10,6 +11,8 @@ import NavigationMenu from './NavigationMenu';
 export function Header({ header, isLoggedIn, cart }) {
     const [navOpen, setNavOpen] = useState(false);
     const { shop, menu } = header;
+    const { productList } = useLoaderData();
+    const { products } = productList;
 
     function closeNavigationMenu() {
         if (!navOpen) {
@@ -19,36 +22,61 @@ export function Header({ header, isLoggedIn, cart }) {
         setNavOpen(false);
     }
 
-    return (
-        <header
-            className={`${styles.header}`}
-            onPointerLeave={closeNavigationMenu}
-        >
-            <div className={`${styles.header_cube_left} max-[900px]:hidden`}></div>
-            <div className={`${styles.header_grid} items-center`}>
-                <Link
-                    className="logo"
-                    prefetch="intent"
-                    to="/"
-                >
-                    <span className="max-[900px]:hidden">{shop.name}</span>
-                    <span className="min-[901px]:hidden">ov_e</span>
-                </Link>
-                <HeaderMenu
-                    menu={menu}
-                    navOpen={navOpen}
-                    setNavOpen={setNavOpen}
-                    viewport="desktop"
-                    primaryDomainUrl={header.shop.primaryDomain.url}
-                />
-            </div>
-            <div className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`}></div>
+    const headerMotion = {
+        animate: {
+            color: navOpen ? '#F1F0EC' : '#000',
+            transition: {
+                duration: 0.3,
+                ease: [0.2, 0.4, 0.8, 0.4],
+            }
+        },
+    }
 
-            <NavigationMenu
-                navOpen={navOpen}
-                setNavOpen={setNavOpen}
-            />
-        </header>
+    const blockMotion = {
+        animate: {
+            backgroundColor: navOpen ? '#F1F0EC' : '#000',
+            transition: {
+                duration: 0.3,
+                ease: [0.2, 0.4, 0.8, 0.4],
+            }
+        },
+    }
+
+    return (
+        <AnimatePresence>
+            <motion.header
+                className={`${styles.header}`}
+                onMouseLeave={closeNavigationMenu}
+                variants={headerMotion}
+                animate='animate'
+            >
+                <motion.div className={`${styles.header_cube_left} max-[900px]:hidden`} variants={blockMotion} animate='animate'></motion.div>
+                <div className={`${styles.header_grid} items-center`}>
+                    <Link
+                        className="logo"
+                        prefetch="intent"
+                        to="/"
+                    >
+                        <span className="max-[900px]:hidden">{shop.name}</span>
+                        <span className="min-[901px]:hidden">ov_e</span>
+                    </Link>
+                    <HeaderMenu
+                        menu={menu}
+                        navOpen={navOpen}
+                        setNavOpen={setNavOpen}
+                        productCount={products.nodes.length}
+                        viewport="desktop"
+                        primaryDomainUrl={header.shop.primaryDomain.url}
+                    />
+                </div>
+                <motion.div className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`} variants={blockMotion} animate='animate'></motion.div>
+
+                <NavigationMenu
+                    navOpen={navOpen}
+                    products={products}
+                />
+            </motion.header>
+        </AnimatePresence>
     );
 }
 
@@ -59,7 +87,7 @@ export function Header({ header, isLoggedIn, cart }) {
  *   viewport: Viewport;
  * }}
  */
-export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOpen }) {
+export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOpen, productCount }) {
     const { publicStoreDomain } = useRootLoaderData();
     const className = `col-start-3 col-span-2 flex max-[900px]:hidden`;
 
@@ -105,14 +133,13 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
                         className={`${styles.header_menu_item} mr-[1.5rem]`}
                         end
                         key={item.id}
-                        // onPointerEnter={item.title == 'Products' ? openNavigationMenu : undefined}
-                        onPointerDown={item.title == 'Products' ? openNavigationMenu : undefined}
+                        onMouseEnter={item.title == 'Products' ? openNavigationMenu : undefined}
                         prefetch="intent"
                         to={url}
                     >
                         <div className={`relative ${item.title == 'Products' && 'mr-[0.5rem]'} `}>
                             {item.title}
-                            {item.title == 'Products' && (<div className="absolute text-[0.8rem] top-[-0.8rem] right-[-0.5rem]">2</div>)}
+                            {item.title == 'Products' && (<div className="absolute text-[0.8rem] top-[-0.8rem] right-[-0.5rem]">{productCount}</div>)}
                         </div>
                     </NavLink>
                 );
