@@ -95,7 +95,7 @@ export default function NavigationMenu({ navOpen, products }) {
                                             <h3 className='translate-y-[0.15rem] col-start-3 col-span-2'>{product.shortDescription.value}</h3>
                                             <h3 className='translate-y-[0.15rem] col-start-5'>{product.productSystem.value}</h3>
                                             <h3 className='translate-y-[0.15rem] col-start-6'>{product.productYear.value}</h3>
-                                            <h3 className='translate-y-[0.15rem] col-start-7'>{product.productionStage.value}</h3>
+                                            <h3 className={`translate-y-[0.15rem] col-start-7 ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
                                         </motion.div>
                                     </div>
                                 );
