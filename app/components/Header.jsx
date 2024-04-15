@@ -3,6 +3,7 @@ import { Suspense, useState } from 'react';
 import { useRootLoaderData } from '~/root';
 import styles from '~/styles/components/Header.module.css';
 import NavigationMenu from './NavigationMenu';
+import NavigationMenuMobile from './NavigationMenuMobile';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /**
@@ -20,6 +21,19 @@ export function Header({ header, isLoggedIn, cart }) {
         }
 
         setNavOpen(false);
+    }
+
+    function isMobile() {
+        return window.innerWidth <= 900;
+    }
+
+    function toggleMobileMenu() {
+        if (navOpen) {
+            setNavOpen(false);
+            return;
+        }
+
+        setNavOpen(true);
     }
 
     const headerMotion = {
@@ -69,9 +83,21 @@ export function Header({ header, isLoggedIn, cart }) {
                         primaryDomainUrl={header.shop.primaryDomain.url}
                     />
                 </div>
-                <motion.div className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`} variants={blockMotion} animate='animate'></motion.div>
+                <motion.div
+                    className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`}
+                    onMouseDown={isMobile ? toggleMobileMenu : undefined}
+                    variants={blockMotion}
+                    animate='animate'
+                >
+                </motion.div>
 
                 <NavigationMenu
+                    navOpen={navOpen}
+                    products={products}
+                />
+
+                <NavigationMenuMobile
+                    menu={menu}
                     navOpen={navOpen}
                     products={products}
                 />

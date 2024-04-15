@@ -63,7 +63,7 @@ export default function NavigationMenu({ navOpen, products }) {
             <AnimatePresence>
                 {navOpen && (
                     <motion.div
-                        className={`${styles.table} -z-10 origin-top`}
+                        className={`${styles.table} -z-10 origin-top max-[900px]:hidden`}
                         variants={menuMotion}
                         initial='initial'
                         animate='animate'
@@ -73,7 +73,7 @@ export default function NavigationMenu({ navOpen, products }) {
                             <div className={`overflow-hidden mb-[0.625rem]`}>
                                 <motion.div
                                     variants={productLinkMotion}
-                                    className={`${styles.table_name_row}`}
+                                    className={`${styles.table_name_row} pb-[0.375rem]`}
                                 >
                                     <h3 className='translate-y-[0.15rem]'>Unique Identifier</h3>
                                     <h3 className='translate-y-[0.15rem] col-start-3'>Description</h3>
@@ -88,8 +88,7 @@ export default function NavigationMenu({ navOpen, products }) {
                                     <div className={`overflow-hidden`} key={product.id}>
                                         <motion.div
                                             variants={productLinkMotion}
-                                            className={`${styles.table_item_row} pt-[0.375rem]`}
-                                            key={product.id}
+                                            className={`${styles.table_item_row} pt-[0.375rem] pb-[0.375rem]`}
                                         >
                                             <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
                                             <h3 className='translate-y-[0.15rem] col-start-3 col-span-2'>{product.shortDescription.value}</h3>
