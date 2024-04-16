@@ -108,14 +108,13 @@ export default function NavigationMenuMobile({ menu, navOpen, products }) {
                                             : item.url;
                                     return (
                                         item.title !== 'Products' && (
-                                            <div className='overflow-hidden'>
+                                            <div className='overflow-hidden' key={item.id}>
                                                 <motion.div
                                                     className='pb-[0.5rem] pt-[0.5rem]'
                                                     variants={productLinkMotion}
                                                 >
                                                     <NavLink
                                                         end
-                                                        key={item.id}
                                                         prefetch="intent"
                                                         to={url}
                                                     >
