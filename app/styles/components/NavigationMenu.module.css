@@ -29,3 +29,10 @@
         border-bottom: 0.5px solid var(--cloud-dancer);
     }
 }
+
+@media only screen and (max-width: 1440px) {
+    .table {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
