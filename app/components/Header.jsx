@@ -28,6 +28,8 @@ export function Header({ header, isLoggedIn, cart }) {
     }
 
     function toggleMobileMenu() {
+        document.body.style.overflow = navOpen ? 'auto' : 'hidden';
+
         if (navOpen) {
             setNavOpen(false);
             return;
