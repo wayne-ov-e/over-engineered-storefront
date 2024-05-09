@@ -10,29 +10,29 @@
 
 /* Neue Machina - Medium (Used for logo) */
 @font-face {
-  font-family: 'Neue Machina';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url('~/assets/fonts/PPNeueMachina-PlainMedium.woff2') format('woff2');
+    font-family: 'Neue Machina';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url('~/assets/fonts/PPNeueMachina-PlainMedium.woff2') format('woff2');
 }
 
 /* Neue Machina - Regular */
 @font-face {
-  font-family: 'Neue Machina';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url('~/assets/fonts/PPNeueMachina-PlainRegular.woff2') format('woff2');
+    font-family: 'Neue Machina';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('~/assets/fonts/PPNeueMachina-PlainRegular.woff2') format('woff2');
 }
 
 /* NB International - Regular */
 @font-face {
-  font-family: 'NB International';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url('~/assets/fonts/nbinternationalproreg-webfont.woff2') format('woff2');
+    font-family: 'NB International';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('~/assets/fonts/nbinternationalproreg-webfont.woff2') format('woff2');
 }
 
 html {
@@ -77,7 +77,7 @@ body {
     background-color: var(--cloud-dancer);
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
     display: none;
 }
 
@@ -86,12 +86,14 @@ body::-webkit-scrollbar{
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
-    line-height: 0.7; /* 24px */
+    line-height: 0.7;
+    /* 24px */
     letter-spacing: -0.24px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: never;
     text-decoration: none !important;
+    user-select: none;
 
     @media (max-width: 900px) {
         font-size: 2.4rem;

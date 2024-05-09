@@ -19,6 +19,22 @@ h2 {
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
+    user-select: none;
+    /* 24px */
+
+    @media (max-width: 900px) {
+        font-size: 1.6rem;
+    }
+}
+
+h2-n {
+    font-family: 'Neue Machina', 'NB International', sans-serif;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase;
+    user-select: none;
     /* 24px */
 
     @media (max-width: 900px) {
