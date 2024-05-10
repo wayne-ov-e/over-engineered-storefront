@@ -22,37 +22,17 @@ export default function ProductHandle() {
             {/* Desktop */}
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
-                    <div
-                        className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
-                    >
-                        <ProgressiveImage
-                            className="mb-6"
-                            lowResSrc={lowResImage}
-                            highResSrc={highResImage}
-                            alt="Descriptive Alt Text"
-                        />
-
-                        <ProgressiveImage
-                            className="mb-12"
-                            lowResSrc={lowResImage}
-                            highResSrc={highResImage}
-                            alt="Descriptive Alt Text"
-                        />
-                    </div>
-                </div>
-
-                <div className={`${styles.fixed_grid} mt-[9.302rem]`}>
-                    <div className='col-span-2'>
+                    <div className='col-span-2 h-fit sticky mb-6 top-[9.302rem]'>
                         <div className={`${styles.child_grid} col-span-2 mb-10`}>
                             <div className='col-span-2'>
                                 <h2-n>{handle}</h2-n>
                             </div>
-                            <div className='col-start-4 text-right'>
+                            <div className='col-start-4'>
                                 <p>$ 76.00 CAD</p>
                             </div>
                         </div>
 
-                        <div className={`${styles.child_grid} col-span-2 mb-6`}>
+                        <div className={`${styles.child_grid} col-span-2 mb-16`}>
                             <p className='text-drizzle'>Description</p>
                             <div className='col-start-2 col-span-3'>
                                 <p>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
@@ -98,7 +78,25 @@ export default function ProductHandle() {
                         </div>
                     </div>
 
-                    <div className='col-start-6 col-span-1'>
+                    <div
+                        className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
+                    >
+                        <ProgressiveImage
+                            className="mb-6"
+                            lowResSrc={lowResImage}
+                            highResSrc={highResImage}
+                            alt="Descriptive Alt Text"
+                        />
+
+                        <ProgressiveImage
+                            className="mb-12"
+                            lowResSrc={lowResImage}
+                            highResSrc={highResImage}
+                            alt="Descriptive Alt Text"
+                        />
+                    </div>
+
+                    <div className='col-start-6 col-span-1 h-fit sticky mb-12 top-[9.302rem]'>
                         <p>We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
                     </div>
                 </div>
