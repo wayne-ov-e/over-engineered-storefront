@@ -1,7 +1,8 @@
 /* Index page styles */
 .main_grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* Creates 8 columns */
+    grid-template-columns: repeat(8, 1fr);
+    /* Creates 8 columns */
     column-gap: 1.25rem;
     margin-left: 4rem;
     margin-right: 4rem;
@@ -10,20 +11,24 @@
 
 .fixed_grid {
     display: grid;
+    width: -webkit-fill-available;
     position: fixed;
     top: 0;
-    grid-template-columns: repeat(8, 1fr); /* Creates 8 columns */
+    grid-template-columns: repeat(8, 1fr);
+    /* Creates 8 columns */
     column-gap: 1.25rem;
     margin-left: 4rem;
     margin-right: 4rem;
 }
 
-.image_container::-webkit-scrollbar{
+.image_container::-webkit-scrollbar {
     display: none;
 }
 
 @media only screen and (max-width: 1440px) {
-    .main_grid, .fixed_grid {
+
+    .main_grid,
+    .fixed_grid {
         margin-left: 2rem;
         margin-right: 2rem;
     }
