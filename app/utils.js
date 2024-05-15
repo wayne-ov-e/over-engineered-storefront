@@ -49,3 +49,10 @@ export function getVariantUrl({
 }
 
 /** @typedef {import('@shopify/hydrogen/storefront-api-types').SelectedOption} SelectedOption */
+
+/**
+ * @param {string} price
+ */
+export function formatPrice(price) {
+    return parseFloat(price).toFixed(2);
+}

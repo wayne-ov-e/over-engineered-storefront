@@ -5,17 +5,30 @@ import ProgressiveImage from '~/components/ProgressiveImage.jsx';
 import Button from '~/components/Button.jsx'
 import highResImage from '~/assets/images/DWOS_TRAY_01.webp';
 import lowResImage from '~/assets/images/DWOS_TRAY_01_low-res.webp';
+import { formatPrice } from '~/utils';
 
-export function loader({ params }) {
+export async function loader({ params, context }) {
     const { handle } = params;
+    const { product } = await context.storefront.query(PRODUCT_QUERY, {
+        variables: {
+            handle, // Pass the handle to the GraphQL query
+        },
+    });
+
+    if (!product?.id) {
+        throw new Response(null, { status: 404 });
+    }
 
     return json({
-        handle
+        product
     });
 }
 
 export default function ProductHandle() {
-    const { handle } = useLoaderData();
+    const { product } = useLoaderData();
+    console.log(product)
+    const price = formatPrice(product.variants.edges[0].node.price.amount);
+    const { descriptionHtml } = product;
 
     return (
         <div>
@@ -25,19 +38,16 @@ export default function ProductHandle() {
                     <div className='col-span-2 h-fit sticky mb-6 top-[9.302rem]'>
                         <div className={`${styles.child_grid} col-span-2 mb-10`}>
                             <div className='col-span-2'>
-                                <h2-n>{handle}</h2-n>
+                                <h2-n>{product.title}</h2-n>
                             </div>
                             <div className='col-start-4'>
-                                <p>$ 76.00 CAD</p>
+                                <p>$ {price} CAD</p>
                             </div>
                         </div>
 
                         <div className={`${styles.child_grid} col-span-2 mb-16`}>
                             <p className='text-drizzle'>Description</p>
-                            <div className='col-start-2 col-span-3'>
-                                <p>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
-                                <p className="mt-2">Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools.</p>
-                            </div>
+                            <div className='col-start-2 col-span-3' dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
                         </div>
 
                         <div className={`${styles.child_grid} col-span-2 mb-6`}>
@@ -63,7 +73,7 @@ export default function ProductHandle() {
                             </div>
                         </div>
 
-                        <div className={`${styles.child_grid} col-span-2 mb-6`}>
+                        <div className={`${styles.child_grid} col-span-2 mb-16`}>
                             <p className='text-drizzle'>Shipping</p>
                             <p className='col-start-2 col-span-3'>Shipped within 2 business days</p>
                         </div>
@@ -104,3 +114,36 @@ export default function ProductHandle() {
         </div>
     );
 }
+
+const PRODUCT_QUERY = `#graphql
+    query product($handle: String!) {
+        product(handle: $handle) {
+            id
+            title
+            handle
+            vendor
+            descriptionHtml
+            productYear: metafield(namespace: "custom", key: "product_year") {
+                value
+            }
+            productSystem: metafield(namespace: "custom", key: "product_system") {
+                value
+            }
+            shortDescription: metafield(namespace: "custom", key: "short_description") {
+                value
+            }
+            productionStage: metafield(namespace: "custom", key: "production_stage") {
+                value
+            }
+            variants(first: 1) {
+                edges {
+                    node {
+                        price {
+                            amount
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;
