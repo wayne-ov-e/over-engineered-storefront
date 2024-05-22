@@ -88,7 +88,7 @@ body::-webkit-scrollbar {
     font-weight: 500;
     line-height: 0.7;
     /* 24px */
-    letter-spacing: -0.24px;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: never;
