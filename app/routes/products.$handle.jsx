@@ -29,6 +29,7 @@ export default function ProductHandle() {
     console.log(product)
     const price = formatPrice(product.variants.edges[0].node.price.amount);
     const { descriptionHtml } = product;
+    const model = product.variants.edges[0].node.sku;
 
     return (
         <div>
@@ -45,7 +46,7 @@ export default function ProductHandle() {
                             </div>
                         </div>
 
-                        <div className={`${styles.child_grid} col-span-2 mb-16`}>
+                        <div className={`${styles.child_grid} col-span-2 mb-15`}>
                             <p className='text-drizzle'>Description</p>
                             <div className='col-start-2 col-span-3' dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
                         </div>
@@ -55,25 +56,28 @@ export default function ProductHandle() {
                             <div className='col-start-2 col-span-3'>
                                 <div className={`${styles.mini_grid} mb-1`}>
                                     <p>Model</p>
-                                    <p className='col-span-2'>DWOS_TRAY_01</p>
+                                    <p className='col-span-2'>{model}</p>
                                 </div>
                                 <div className={`${styles.mini_grid} mb-1`}>
                                     <p>Year</p>
-                                    <p className='col-span-2'>2023</p>
+                                    <p className='col-span-2'>{product.productYear.value}</p>
                                 </div>
                                 <div className={`${styles.mini_grid} mb-1`}>
                                     <p>Material</p>
-                                    <p className='col-span-2'>Aluminum 6063 / Silicone</p>
+                                    <p className='col-span-2'>{product.material.value}</p>
+                                </div>
+                                <div className={`${styles.mini_grid} mb-1`}>
+                                    <p>Dimensions</p>
+                                    <p className='col-span-2'>{product.dimensions.value}<br></br>({product.dimensionsMetric.value})</p>
                                 </div>
                                 <div className={`${styles.mini_grid}`}>
                                     <p>Collection</p>
-                                    <p className='col-span-2'>Domestic Workspace
-                                        Organization System (DWOS)</p>
+                                    <p className='col-span-2'>{product.productCollection.value}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className={`${styles.child_grid} col-span-2 mb-16`}>
+                        <div className={`${styles.child_grid} col-span-2 mb-15`}>
                             <p className='text-drizzle'>Shipping</p>
                             <p className='col-start-2 col-span-3'>Shipped within 2 business days</p>
                         </div>
@@ -129,10 +133,25 @@ const PRODUCT_QUERY = `#graphql
             productSystem: metafield(namespace: "custom", key: "product_system") {
                 value
             }
+            productCollection: metafield(namespace: "custom", key: "product_collection") {
+                value
+            }
             shortDescription: metafield(namespace: "custom", key: "short_description") {
                 value
             }
             productionStage: metafield(namespace: "custom", key: "production_stage") {
+                value
+            }
+            material: metafield(namespace: "custom", key: "material") {
+                value
+            }
+            dimensions: metafield(namespace: "custom", key: "dimensions") {
+                value
+            }
+            dimensionsMetric: metafield(namespace: "custom", key: "dimensions_metric_") {
+                value
+            }
+            weight: metafield(namespace: "custom", key: "weight") {
                 value
             }
             variants(first: 1) {
@@ -141,6 +160,7 @@ const PRODUCT_QUERY = `#graphql
                         price {
                             amount
                         }
+                        sku
                     }
                 }
             }
