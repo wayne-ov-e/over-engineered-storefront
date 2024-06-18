@@ -69,7 +69,7 @@ export function Header({ header, isLoggedIn, cart }) {
                 <motion.div className={`${styles.header_cube_left} max-[900px]:hidden`} variants={blockMotion} animate='animate'></motion.div>
                 <div className={`${styles.header_grid} items-center`}>
                     <Link
-                        className="logo"
+                        className="logo col-span-2"
                         prefetch="intent"
                         to="/"
                     >
