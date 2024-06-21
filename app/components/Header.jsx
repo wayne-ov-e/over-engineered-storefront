@@ -117,7 +117,7 @@ export function Header({ header, isLoggedIn, cart }) {
  */
 export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOpen, productCount }) {
     const { publicStoreDomain } = useRootLoaderData();
-    const className = `col-start-3 col-span-2 flex max-[900px]:hidden`;
+    const className = `col-start-4 col-span-2 flex max-[900px]:hidden`;
 
     function closeAside(event) {
         if (viewport === 'mobile') {

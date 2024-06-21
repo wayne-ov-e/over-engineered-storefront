@@ -76,10 +76,10 @@ export default function NavigationMenu({ navOpen, products }) {
                                     className={`${styles.table_name_row} pb-[0.375rem]`}
                                 >
                                     <h3 className='translate-y-[0.15rem]'>Unique Identifier</h3>
-                                    <h3 className='translate-y-[0.15rem] col-start-3'>Description</h3>
-                                    <h3 className='translate-y-[0.15rem] col-start-5'>Product System</h3>
-                                    <h3 className='translate-y-[0.15rem] col-start-6'>Year</h3>
-                                    <h3 className='translate-y-[0.15rem] col-start-7'>Production Stage</h3>
+                                    <h3 className='translate-y-[0.15rem] col-start-4'>Description</h3>
+                                    <h3 className='translate-y-[0.15rem] col-start-6'>Product System</h3>
+                                    <h3 className='translate-y-[0.15rem] col-start-7'>Year</h3>
+                                    <h3 className='translate-y-[0.15rem] col-start-8'>Production Stage</h3>
                                 </motion.div>
                             </div>
 
@@ -91,10 +91,10 @@ export default function NavigationMenu({ navOpen, products }) {
                                             className={`${styles.table_item_row} pt-[0.375rem] pb-[0.375rem]`}
                                         >
                                             <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
-                                            <h3 className='translate-y-[0.15rem] col-start-3 col-span-2'>{product.shortDescription.value}</h3>
-                                            <h3 className='translate-y-[0.15rem] col-start-5'>{product.productSystem.value}</h3>
-                                            <h3 className='translate-y-[0.15rem] col-start-6'>{product.productYear.value}</h3>
-                                            <h3 className={`translate-y-[0.15rem] col-start-7 ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
+                                            <h3 className='translate-y-[0.15rem] col-start-4 col-span-2'>{product.shortDescription.value}</h3>
+                                            <h3 className='translate-y-[0.15rem] col-start-6'>{product.productSystem.value}</h3>
+                                            <h3 className='translate-y-[0.15rem] col-start-7'>{product.productYear.value}</h3>
+                                            <h3 className={`translate-y-[0.15rem] col-start-8 ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
                                         </motion.div>
                                     </div>
                                 );

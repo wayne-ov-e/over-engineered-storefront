@@ -93,7 +93,7 @@ export default function ProductHandle() {
                     </div>
 
                     <div
-                        className={`${styles.image_container} col-start-3 col-span-3 overflow-auto max-h-[100%]`}
+                        className={`${styles.image_container} col-start-4 col-span-3 overflow-auto max-h-[100%]`}
                     >
                         <ProgressiveImage
                             className="mb-6"
@@ -110,7 +110,7 @@ export default function ProductHandle() {
                         />
                     </div>
 
-                    <div className='col-start-6 col-span-1 h-fit sticky mb-12 top-[9.302rem]'>
+                    <div className='col-span-1 h-fit sticky mb-12 top-[9.302rem]'>
                         <p>We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
                     </div>
                 </div>

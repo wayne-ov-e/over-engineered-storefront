@@ -29,7 +29,7 @@ function FooterMenu({ menu, primaryDomainUrl }) {
     const { publicStoreDomain } = useRootLoaderData();
 
     return (
-        <nav className={`${styles.footer_menu} col-start-6 col-span-2 max-[900px]:hidden`} role="navigation">
+        <nav className={`${styles.footer_menu} col-start-7 col-span-2 max-[900px]:hidden`} role="navigation">
             {menu.items.map((item) => {
                 if (!item.url) return null;
                 // if the url is internal, we strip the domain
@@ -70,7 +70,7 @@ function SecondaryFooterMenu({ menu, primaryDomainUrl }) {
     const { publicStoreDomain } = useRootLoaderData();
 
     return (
-        <nav className={`${styles.footer_menu} col-start-3 col-span-2 max-[900px]:hidden`} role="navigation">
+        <nav className={`${styles.footer_menu} col-start-4 col-span-2 max-[900px]:hidden`} role="navigation">
             {menu.items.map((item) => {
                 if (!item.url) return null;
                 // if the url is internal, we strip the domain
