@@ -18,7 +18,7 @@ export default function Index() {
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
                     <div className='col-span-3 h-fit sticky mb-6 top-[9.302rem]'>
-                        <h2 className='col-span-2'>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</h2>
+                        <h2-p className='col-span-2'>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</h2-p>
                     </div>
 
                     <div

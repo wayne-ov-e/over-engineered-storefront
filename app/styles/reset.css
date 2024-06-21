@@ -27,6 +27,19 @@ h2 {
     }
 }
 
+h2-p {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    user-select: none;
+    /* 24px */
+
+    @media (max-width: 900px) {
+        font-size: 2.4rem;
+    }
+}
+
 h2-n {
     font-family: 'Neue Machina', 'NB International', sans-serif;
     font-size: 1.5rem;
