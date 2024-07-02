@@ -9,16 +9,10 @@
     height: 100%;
 }
 
-.fixed_grid {
+.child_grid {
     display: grid;
-    width: -webkit-fill-available;
-    position: fixed;
-    top: 0;
-    grid-template-columns: repeat(8, 1fr);
-    /* Creates 8 columns */
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 1.25rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
 }
 
 .image_container::-webkit-scrollbar {

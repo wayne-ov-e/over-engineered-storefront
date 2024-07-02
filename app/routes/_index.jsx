@@ -17,8 +17,17 @@ export default function Index() {
             {/* Desktop */}
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
-                    <div className='col-span-3 h-fit sticky mb-6 top-[9.302rem]'>
+                    <div className='col-span-2 h-fit sticky top-[9.302rem]'>
                         <h2-p className='col-span-2'>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</h2-p>
+
+                        <div className={`${styles.child_grid} mt-12`}>
+                            <p>We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
+                            <p>Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools.</p>
+                        </div>
+
+                        <div className={`mt-8 mb-14 flex justify-end`}>
+                            <a className='button'>To Product <span className="align-super">↗</span></a>
+                        </div>
                     </div>
 
                     <div
@@ -36,13 +45,6 @@ export default function Index() {
                         <p><span className="align-super" style={{ fontSize: "smaller" }}>1</span> DWOS stands for Domestic Workspace Organization System, despite the name we encourage our products to be used beyond the workspace.</p>
                     </div>
                 </div>
-
-                {/* <div className="col-start-2">
-                    <p>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</p>
-                    <p className="mt-2">Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools.</p>
-                    <p className="mt-15">We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
-                </div> */}
-
             </div>
 
             {/* Mobile */}
