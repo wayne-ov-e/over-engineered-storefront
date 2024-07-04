@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     /* Creates 8 columns */
-    column-gap: 1.25rem;
+    column-gap: 2rem;
     margin-left: 4rem;
     margin-right: 4rem;
     height: 100%;
@@ -12,7 +12,7 @@
 .child_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 1.25rem;
+    column-gap: 2rem;
 }
 
 .image_container::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 .table {
     position: absolute;
-    column-gap: 1.25rem;
+    column-gap: 2rem;
     width: 100%;
     padding-left: 4rem;
     padding-right: 4rem;
@@ -15,7 +15,7 @@
         grid-template-columns: repeat(8, 1fr);
         /* Creates 8 columns */
         color: var(--drizzle);
-        column-gap: 1.25rem;
+        column-gap: 2rem;
         font-size: 0.75rem;
         font-style: normal;
         font-weight: 400;
@@ -27,7 +27,7 @@
     .table_item_row {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        column-gap: 1.25rem;
+        column-gap: 2rem;
         border-bottom: 0.5px solid var(--cloud-dancer);
     }
 }

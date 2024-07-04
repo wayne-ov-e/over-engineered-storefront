@@ -1,12 +1,15 @@
 .button {
+    font-family: 'Neue Machina';
     display: block;
     font-size: 0.75rem;
     width: 100%;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     text-align: center;
-    background-color: var(--black);
-    color: var(--cloud-dancer);
+    color: var(--black);
+    border: 1px solid var(--black);
+    line-height: .7;
+    user-select: none;
 
     @media (max-width: 900px) {
         font-size: 1.2rem;
