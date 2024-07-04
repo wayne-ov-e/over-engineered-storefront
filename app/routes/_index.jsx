@@ -17,16 +17,16 @@ export default function Index() {
             {/* Desktop */}
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
-                    <div className='col-span-2 h-fit sticky top-[9.302rem]'>
+                    <div className='col-span-3 h-fit sticky top-[9.302rem]'>
                         <h2-p className='col-span-2'>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</h2-p>
 
                         <div className={`${styles.child_grid} mt-12`}>
-                            <p>We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
+                            <p>We designed a versatile modular storage solution that seamlessly integrates into various living areas. <br></br><br></br>Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
                             <p>Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools.</p>
                         </div>
 
-                        <div className={`mt-8 mb-14 flex justify-end`}>
-                            <a className='button'>To Product <span className="align-super">↗</span></a>
+                        <div className={`${styles.child_grid} mt-8 mb-14 justify-end`}>
+                            <a className='col-start-3 button'>To Product <span className="align-super">↗</span></a>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@ export default function Index() {
 
                 <h4 className="mt-[0.4rem] mb-[2.4rem] text-[1.2rem]">DWOS_TRAY_01</h4>
 
-                <p className="pb-[2.4rem]">Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools. </p>
+                <p className="pb-[2.4rem]">Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools. </p>
             </div>
         </div>
     );
