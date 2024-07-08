@@ -90,7 +90,7 @@ export default function NavigationMenu({ navOpen, products }) {
                                             variants={productLinkMotion}
                                             className={`${styles.table_item_row} pt-[0.375rem] pb-[0.375rem]`}
                                         >
-                                            <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
+                                            <h3-n> className='translate-y-[0.15rem]'>{product.title}</h3-n>
                                             <h3 className='translate-y-[0.15rem] col-start-4 col-span-2'>{product.shortDescription.value}</h3>
                                             <h3 className='translate-y-[0.15rem] col-start-6'>{product.productSystem.value}</h3>
                                             <h3 className='translate-y-[0.15rem] col-start-7'>{product.productYear.value}</h3>

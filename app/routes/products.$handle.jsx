@@ -36,59 +36,11 @@ export default function ProductHandle() {
             {/* Desktop */}
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
-                    <div className='col-span-2 h-fit sticky mb-6 top-[9.302rem]'>
-                        <div className={`${styles.child_grid} col-span-2 mb-10`}>
-                            <div className='col-span-2'>
-                                <h2-n>{product.title}</h2-n>
-                            </div>
-                            <div className='col-start-4'>
-                                <p>$ {price} CAD</p>
-                            </div>
-                        </div>
+                    <div className='col-span-3 h-fit sticky mb-6 top-[9.302rem]'>
+                        <div className={`${styles.child_grid}`}>
+                            <Button text="silver" style="col-span-1" />
+                            <Button text="add to cart" style="col-span-1 col-start-2" />
 
-                        <div className={`${styles.child_grid} col-span-2 mb-15`}>
-                            <p className='text-drizzle'>Description</p>
-                            <div className='col-start-2 col-span-3' dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
-                        </div>
-
-                        <div className={`${styles.child_grid} col-span-2 mb-6`}>
-                            <p className='text-drizzle'>Specifications</p>
-                            <div className='col-start-2 col-span-3'>
-                                <div className={`${styles.mini_grid} mb-1`}>
-                                    <p>Model</p>
-                                    <p className='col-span-2'>{model}</p>
-                                </div>
-                                <div className={`${styles.mini_grid} mb-1`}>
-                                    <p>Year</p>
-                                    <p className='col-span-2'>{product.productYear.value}</p>
-                                </div>
-                                <div className={`${styles.mini_grid} mb-1`}>
-                                    <p>Material</p>
-                                    <p className='col-span-2'>{product.material.value}</p>
-                                </div>
-                                <div className={`${styles.mini_grid} mb-1`}>
-                                    <p>Dimensions</p>
-                                    <p className='col-span-2'>{product.dimensions.value}<br></br>({product.dimensionsMetric.value})</p>
-                                </div>
-                                <div className={`${styles.mini_grid}`}>
-                                    <p>Collection</p>
-                                    <p className='col-span-2'>{product.productCollection.value}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className={`${styles.child_grid} col-span-2 mb-15`}>
-                            <p className='text-drizzle'>Shipping</p>
-                            <p className='col-start-2 col-span-3'>Shipped within 2 business days</p>
-                        </div>
-
-                        <div className={`${styles.child_grid} col-span-2 mb-6`}>
-                            <p></p>
-                            <div className='col-start-2 col-span-3'>
-                                <Button
-                                    text="Add to cart"
-                                />
-                            </div>
                         </div>
                     </div>
 

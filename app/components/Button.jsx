@@ -5,12 +5,6 @@ import { motion } from 'framer-motion';
 // Define the animation variants
 const buttonVariants = {
     hover: {
-        scale: 1.02,
-        opacity: 0.9,
-        transition: {
-            type: 'tween',
-            ease: 'easeInOut',
-        },
     }
 };
 

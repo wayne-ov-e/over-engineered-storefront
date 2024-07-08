@@ -143,7 +143,7 @@ export function CartSummary({ cost, layout, children = null }) {
 
     return (
         <div aria-labelledby="cart-summary" className={className}>
-            <h4>Totals</h4>
+            <h3-n>>Totals</h3-n>
             <dl className="cart-subtotal">
                 <dt>Subtotal</dt>
                 <dd>
