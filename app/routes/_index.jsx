@@ -38,7 +38,7 @@ export default function Index() {
                             highResSrc={highResImage}
                             alt="Descriptive Alt Text"
                         />
-                        <h3-n> className="mb-14 mt-2">DWOS_TRAY_01</h3-n>
+                        <h3-n className="mb-14 mt-2">DWOS_TRAY_01</h3-n>
                     </div>
 
                     <div className="col-start-7 h-fit sticky mb-6 top-[9.302rem]">
