@@ -67,7 +67,7 @@ h3 {
     }
 }
 
-h3-n {
+h4 {
     font-family: 'Neue Machina', 'NB International', sans-serif;
     font-size: 0.75rem;
     font-style: normal;
@@ -77,6 +77,18 @@ h3-n {
 
     @media (max-width: 900px) {
         font-size: 1.4rem;
+    }
+}
+
+h5 {
+    font-size: 0.6rem;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--drizzle);
+
+    @media (max-width: 900px) {
+        font-size: 0.9rem;
     }
 }
 

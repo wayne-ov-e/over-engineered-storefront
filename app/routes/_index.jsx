@@ -3,6 +3,7 @@ import highResImage from '~/assets/images/DWOS_TRAY_01.webp';
 import lowResImage from '~/assets/images/DWOS_TRAY_01_low-res.webp';
 import Button from '~/components/Button.jsx';
 import ProgressiveImage from '~/components/ProgressiveImage.jsx';
+import { Link } from '@remix-run/react';
 
 export function meta() {
     return [
@@ -26,7 +27,7 @@ export default function Index() {
                         </div>
 
                         <div className={`${styles.child_grid} mt-8 mb-14 justify-end`}>
-                            <a className='col-start-3 button'>To Product <span className="align-super">↗</span></a>
+                            <Link className='col-start-3 button' to='/products/dwos_tray_01' prefetch="intent">To Product <span className="align-super">↗</span></Link>
                         </div>
                     </div>
 
@@ -38,7 +39,7 @@ export default function Index() {
                             highResSrc={highResImage}
                             alt="Descriptive Alt Text"
                         />
-                        <h3-n className="mb-14 mt-2">DWOS_TRAY_01</h3-n>
+                        <h4 className="mb-14 mt-2">DWOS_TRAY_01</h4>
                     </div>
 
                     <div className="col-start-7 h-fit sticky mb-6 top-[9.302rem]">
@@ -58,7 +59,7 @@ export default function Index() {
                     alt="Descriptive Alt Text"
                 />
 
-                <h3-n> className="mt-[0.4rem] mb-[2.4rem] text-[1.2rem]">DWOS_TRAY_01</h3-n>
+                <h4 className="mt-[0.4rem] mb-[2.4rem] text-[1.2rem]">DWOS_TRAY_01</h4>
 
                 <p className="pb-[2.4rem]">Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools. </p>
             </div>

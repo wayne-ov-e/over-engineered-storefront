@@ -26,7 +26,6 @@ export async function loader({ params, context }) {
 
 export default function ProductHandle() {
     const { product } = useLoaderData();
-    console.log(product)
     const price = formatPrice(product.variants.edges[0].node.price.amount);
     const { descriptionHtml } = product;
     const model = product.variants.edges[0].node.sku;
@@ -40,8 +39,23 @@ export default function ProductHandle() {
                         <div className={`${styles.child_grid}`}>
                             <Button text="silver" style="col-span-1" />
                             <Button text="add to cart" style="col-span-1 col-start-2" />
-
+                            <div className='flex flex-col'>
+                                <h4 className='mt-1'>{product.title}</h4>
+                                <h4 className="mt-3">${price}</h4>
+                            </div>
                         </div>
+
+                        <div className={`${styles.child_grid} mt-15`}>
+                            <div className={`${styles.mini_grid} col-span-2`} dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
+                            <div>
+                                <h5>{product.material.value}</h5>
+                                <h5>{product.secondaryMaterial.value}</h5>
+                                <h5>{product.dimensions.value}</h5>
+                                <h5 className='mt-3'>Domestic Workspace<br></br>Organization System<br></br>(DWOS)</h5>
+                            </div>
+                        </div>
+
+                        <h5 className='mt-8'>Shipped within 2 business days</h5>
                     </div>
 
                     <div
@@ -88,6 +102,9 @@ const PRODUCT_QUERY = `#graphql
             productCollection: metafield(namespace: "custom", key: "product_collection") {
                 value
             }
+            productCollectionLong: metafield(namespace: "custom", key: "product_collection_long") {
+                value
+            }
             shortDescription: metafield(namespace: "custom", key: "short_description") {
                 value
             }
@@ -97,10 +114,10 @@ const PRODUCT_QUERY = `#graphql
             material: metafield(namespace: "custom", key: "material") {
                 value
             }
-            dimensions: metafield(namespace: "custom", key: "dimensions") {
+            secondaryMaterial: metafield(namespace: "custom", key: "secondary_material") {
                 value
             }
-            dimensionsMetric: metafield(namespace: "custom", key: "dimensions_metric_") {
+            dimensions: metafield(namespace: "custom", key: "dimensions") {
                 value
             }
             weight: metafield(namespace: "custom", key: "weight") {

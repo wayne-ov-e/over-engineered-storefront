@@ -88,7 +88,7 @@ export default function NavigationMenuMobile({ menu, navOpen, products }) {
                                             className={`${styles.mobile_menu_item_row} pt-[0.6rem] pb-[0.6rem] flex justify-between`}
                                             variants={productLinkMotion}
                                         >
-                                            <h3-n> className='translate-y-[0.15rem]'>{product.title}</h3-n>
+                                            <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
                                             <h3 className={`translate-y-[0.15rem] ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
                                         </motion.div>
                                     </div>
