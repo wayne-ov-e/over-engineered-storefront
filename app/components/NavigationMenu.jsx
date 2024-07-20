@@ -1,7 +1,8 @@
 import styles from '~/styles/components/NavigationMenu.module.css';
+import { Link } from '@remix-run/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function NavigationMenu({ navOpen, products }) {
+export default function NavigationMenu({ navOpen, products, closeNavigationMenu }) {
     const menuMotion = {
         initial: {
             scaleY: 0,
@@ -70,6 +71,7 @@ export default function NavigationMenu({ navOpen, products }) {
                         exit='exit'
                     >
                         <motion.div variants={containerVars} initial='initial' animate='animate' exit='exit'>
+
                             <div className={`overflow-hidden mb-[0.625rem]`}>
                                 <motion.div
                                     variants={productLinkMotion}
@@ -82,20 +84,22 @@ export default function NavigationMenu({ navOpen, products }) {
                                     <h3 className='translate-y-[0.15rem] col-start-8'>Production Stage</h3>
                                 </motion.div>
                             </div>
-
                             {products.nodes.map((product) => {
                                 return (
                                     <div className={`overflow-hidden`} key={product.id}>
-                                        <motion.div
-                                            variants={productLinkMotion}
-                                            className={`${styles.table_item_row} pt-[0.375rem] pb-[0.375rem]`}
-                                        >
-                                            <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
-                                            <h3 className='translate-y-[0.15rem] col-start-4 col-span-2'>{product.shortDescription.value}</h3>
-                                            <h3 className='translate-y-[0.15rem] col-start-6'>{product.productSystem.value}</h3>
-                                            <h3 className='translate-y-[0.15rem] col-start-7'>{product.productYear.value}</h3>
-                                            <h3 className={`translate-y-[0.15rem] col-start-8 ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
-                                        </motion.div>
+                                        <Link to={`/products/${product.title}`} prefetch='intent' onClick={closeNavigationMenu}>
+
+                                            <motion.div
+                                                variants={productLinkMotion}
+                                                className={`${styles.table_item_row} pt-[0.375rem] pb-[0.375rem]`}
+                                            >
+                                                <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
+                                                <h3 className='translate-y-[0.15rem] col-start-4 col-span-2'>{product.shortDescription.value}</h3>
+                                                <h3 className='translate-y-[0.15rem] col-start-6'>{product.productSystem.value}</h3>
+                                                <h3 className='translate-y-[0.15rem] col-start-7'>{product.productYear.value}</h3>
+                                                <h3 className={`translate-y-[0.15rem] col-start-8 ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
+                                            </motion.div>
+                                        </Link>
                                     </div>
                                 );
                             })}

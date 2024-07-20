@@ -1,5 +1,6 @@
 import { Await, Link, NavLink, useLoaderData } from '@remix-run/react';
 import { Suspense, useState } from 'react';
+import { useLocation } from '@remix-run/react';
 import { useRootLoaderData } from '~/root';
 import styles from '~/styles/components/Header.module.css';
 import NavigationMenu from './NavigationMenu';
@@ -96,12 +97,14 @@ export function Header({ header, isLoggedIn, cart }) {
                 <NavigationMenu
                     navOpen={navOpen}
                     products={products}
+                    closeNavigationMenu={closeNavigationMenu}
                 />
 
                 <NavigationMenuMobile
                     menu={menu}
                     navOpen={navOpen}
                     products={products}
+                    closeNavigationMenu={closeNavigationMenu}
                 />
             </motion.header>
         </AnimatePresence>
@@ -118,13 +121,7 @@ export function Header({ header, isLoggedIn, cart }) {
 export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOpen, productCount }) {
     const { publicStoreDomain } = useRootLoaderData();
     const className = `col-start-4 col-span-2 flex max-[900px]:hidden`;
-
-    function closeAside(event) {
-        if (viewport === 'mobile') {
-            event.preventDefault();
-            window.location.href = event.currentTarget.href;
-        }
-    }
+    const currentURL = useLocation().pathname;
 
     function openNavigationMenu() {
         if (navOpen) {
@@ -136,16 +133,6 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
 
     return (
         <nav className={className} role="navigation">
-            {viewport === 'mobile' && (
-                <NavLink
-                    onClick={closeAside}
-                    prefetch="intent"
-                    to="/"
-                    end
-                >
-                    Home
-                </NavLink>
-            )}
             {menu.items.map((item) => {
                 if (!item.url) return null;
 
@@ -163,7 +150,7 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
                         key={item.id}
                         onMouseEnter={item.title == 'Products' ? openNavigationMenu : undefined}
                         prefetch="intent"
-                        to={url}
+                        to={item.title == 'Products' ? currentURL : url}
                     >
                         <div className={`relative ${item.title == 'Products' && 'mr-[0.5rem]'} `}>
                             {item.title}

@@ -48,9 +48,9 @@ export default function ProductHandle() {
                         <div className={`${styles.child_grid} mt-15`}>
                             <div className={`${styles.mini_grid} col-span-2`} dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
                             <div>
-                                <h5>{product.material.value}</h5>
-                                <h5>{product.secondaryMaterial.value}</h5>
-                                <h5>{product.dimensions.value}</h5>
+                                <h5>{product.material?.value}</h5>
+                                <h5>{product.secondaryMaterial?.value}</h5>
+                                <h5>{product.dimensions?.value}</h5>
                                 <h5 className='mt-3'>Domestic Workspace<br></br>Organization System<br></br>(DWOS)</h5>
                             </div>
                         </div>
