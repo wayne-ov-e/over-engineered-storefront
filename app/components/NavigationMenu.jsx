@@ -72,10 +72,10 @@ export default function NavigationMenu({ navOpen, products, closeNavigationMenu 
                     >
                         <motion.div variants={containerVars} initial='initial' animate='animate' exit='exit'>
 
-                            <div className={`overflow-hidden mb-[0.625rem]`}>
+                            <div className={`overflow-hidden mb-2`}>
                                 <motion.div
                                     variants={productLinkMotion}
-                                    className={`${styles.table_name_row} pb-[0.375rem]`}
+                                    className={`${styles.table_name_row} pb-2`}
                                 >
                                     <h3 className='translate-y-[0.15rem]'>Unique Identifier</h3>
                                     <h3 className='translate-y-[0.15rem] col-start-4'>Description</h3>
@@ -91,7 +91,7 @@ export default function NavigationMenu({ navOpen, products, closeNavigationMenu 
 
                                             <motion.div
                                                 variants={productLinkMotion}
-                                                className={`${styles.table_item_row} pt-[0.375rem] pb-[0.375rem]`}
+                                                className={`${styles.table_item_row} pt-2 pb-2`}
                                             >
                                                 <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
                                                 <h3 className='translate-y-[0.15rem] col-start-4 col-span-2'>{product.shortDescription.value}</h3>

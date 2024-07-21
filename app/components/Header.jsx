@@ -85,6 +85,8 @@ export function Header({ header, isLoggedIn, cart }) {
                         viewport="desktop"
                         primaryDomainUrl={header.shop.primaryDomain.url}
                     />
+
+                    <CartButton cart={cart} />
                 </div>
                 <motion.div
                     className={`${styles.header_cube_right} max-[900px]:mr-[1.6rem] max-[900px]:w-[1.68rem]`}
@@ -166,14 +168,13 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
 /**
  * @param {Pick<HeaderProps, 'cart'>}
  */
-function CartToggle({ cart }) {
+function CartButton({ cart }) {
     return (
-        <Suspense fallback={<CartBadge count={0} />}>
+        <Suspense>
             <Await resolve={cart}>
-                {(cart) => {
-                    if (!cart) return <CartBadge count={0} />;
-                    return <CartBadge count={cart.totalQuantity || 0} />;
-                }}
+                <NavLink className={`${styles.header_menu_item} col-start-8 flex justify-end relative mr-[0.5rem]`} end>
+                    <div>Cart<div className="absolute text-[0.8rem] top-[-0.8rem] right-[-0.5rem]">{cart.totalQuantity || 0}</div></div>
+                </NavLink>
             </Await>
         </Suspense>
     );

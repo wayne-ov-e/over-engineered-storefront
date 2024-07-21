@@ -50,7 +50,7 @@ function FooterMenu({ menu, primaryDomainUrl }) {
                         key={item.id}
                         prefetch="intent"
                         to={url}
-                        className={`mr-3`}
+                        className={`mr-4`}
                     >
                         {item.title}
                     </NavLink>
@@ -91,7 +91,7 @@ function SecondaryFooterMenu({ menu, primaryDomainUrl }) {
                         key={item.id}
                         prefetch="intent"
                         to={url}
-                        className={`mr-3`}
+                        className={`mr-4`}
                     >
                         <span className="font-normal">{item.title}</span>
                     </NavLink>
