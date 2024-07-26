@@ -154,9 +154,9 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
                         prefetch="intent"
                         to={item.title == 'Products' ? currentURL : url}
                     >
-                        <div className={`relative ${item.title == 'Products' && 'mr-[0.5rem]'} `}>
+                        <div className={`relative ${item.title == 'Products' && 'mr-[0.4em]'} `}>
                             {item.title}
-                            {item.title == 'Products' && (<div className="absolute text-[0.8rem] top-[-0.8rem] right-[-0.5rem]">{productCount}</div>)}
+                            {item.title == 'Products' && (<div className="absolute text-[0.6em] top-[-0.8em] right-[-0.8em]">{productCount}</div>)}
                         </div>
                     </NavLink>
                 );
@@ -172,8 +172,8 @@ function CartButton({ cart }) {
     return (
         <Suspense>
             <Await resolve={cart}>
-                <NavLink className={`${styles.header_menu_item} col-start-8 flex justify-end relative mr-[0.5rem]`} end>
-                    <div>Cart<div className="absolute text-[0.8rem] top-[-0.8rem] right-[-0.5rem]">{cart.totalQuantity || 0}</div></div>
+                <NavLink className={`${styles.header_menu_item} col-start-8 flex justify-end relative mr-[0.5em] max-[900px]:mr-15`} end>
+                    <div>Cart<div className={`absolute text-[0.6em] top-[-1em] right-[-0.8em]`}>{cart.totalQuantity || 0}</div></div>
                 </NavLink>
             </Await>
         </Suspense>
