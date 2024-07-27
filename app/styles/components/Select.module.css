@@ -1,0 +1,30 @@
+.select {
+    position: relative;
+    background-image: none;
+    background-color: unset;
+    font-family: 'Neue Machina';
+    font-size: 0.75rem;
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.75rem;
+    color: var(--black);
+    border: .5px solid var(--black);
+    line-height: 1;
+    user-select: none;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.select:focus {
+    outline: none;
+    border-color: var(--black);
+    --tw-ring-color: none;
+}
+
+.select_caret {
+    position: absolute;
+    width: 10px;
+    top: calc(50% - .2rem);
+    right: 0.75rem;
+}

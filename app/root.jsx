@@ -110,7 +110,7 @@ export async function loader({ context }) {
 
     return defer(
         {
-            cart: cartPromise,
+            cart: await cartPromise,
             footer: await footerPromise,
             secondaryFooter: await secondaryFooterPromise,
             header: await headerPromise,

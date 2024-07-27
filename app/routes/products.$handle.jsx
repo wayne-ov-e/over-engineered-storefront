@@ -1,4 +1,4 @@
-import { useLoaderData } from '@remix-run/react';
+import { useLoaderData, Link, redirect } from '@remix-run/react';
 import styles from '~/styles/routes/products.$handle.module.css';
 import { json } from '@shopify/remix-oxygen';
 import ProgressiveImage from '~/components/ProgressiveImage.jsx';
@@ -6,18 +6,39 @@ import Button from '~/components/Button.jsx'
 import highResImage from '~/assets/images/DWOS_TRAY_01.webp';
 import lowResImage from '~/assets/images/DWOS_TRAY_01_low-res.webp';
 import { formatPrice } from '~/utils';
+import { VariantSelector, getSelectedProductOptions, CartForm } from '@shopify/hydrogen';
+import Select from '~/components/Select';
 
-export async function loader({ params, context }) {
+export async function loader({ params, context, request }) {
+    const selectedOptions = getSelectedProductOptions(request);
     const { handle } = params;
+
     const { product } = await context.storefront.query(PRODUCT_QUERY, {
         variables: {
             handle, // Pass the handle to the GraphQL query
+            selectedOptions,
         },
     });
 
     if (!product?.id) {
         throw new Response(null, { status: 404 });
     }
+
+    //code to redirect to first variant by default
+    if (!product?.selectedVariant) {
+        const searchParams = new URLSearchParams(new URL(request.url).search);
+        const firstVariant = product.variants.edges[0].node;
+
+        for (const option of firstVariant.selectedOptions) {
+            searchParams.set(option.name, option.value);
+        }
+
+        throw redirect(
+            `/products/${product?.handle}?${searchParams.toString()}`,
+            302, // Make sure to use a 302, because the first variant is subject to change
+        );
+    }
+
 
     return json({
         product
@@ -37,8 +58,34 @@ export default function ProductHandle() {
                 <div className={`${styles.main_grid}`}>
                     <div className='col-span-3 h-fit sticky mb-6 top-[9.302rem]'>
                         <div className={`${styles.child_grid}`}>
-                            <Button text="silver" style="col-span-1" />
-                            <Button text="add to cart" style="col-span-1 col-start-2" />
+                            <VariantSelector
+                                handle={product.handle}
+                                options={product.options}
+                                variants={product.variants}
+                            >
+                                {({ option }) => (
+                                    <>
+                                        <Select option={option}></Select>
+                                    </>
+                                )}
+                            </VariantSelector>
+                            <CartForm
+                                className="col-span-1 col-start-2"
+                                route="/cart"
+                                action={CartForm.ACTIONS.LinesAdd}
+                                inputs={{
+                                    lines: [
+                                        {
+                                            merchandiseId: product.selectedVariant?.id,
+                                        },
+                                    ]
+                                }}
+                            >
+                                <button
+                                    className={`${styles.button}`}
+                                    text="add to cart"
+                                >add to cart</button>
+                            </CartForm>
                             <div className='flex flex-col'>
                                 <h4 className='mt-1'>{product.title}</h4>
                                 <h4 className="mt-3">${price}</h4>
@@ -86,7 +133,10 @@ export default function ProductHandle() {
 }
 
 const PRODUCT_QUERY = `#graphql
-    query product($handle: String!) {
+    query product(
+        $handle: String!
+        $selectedOptions: [SelectedOptionInput!]!
+    ) {
         product(handle: $handle) {
             id
             title
@@ -123,13 +173,31 @@ const PRODUCT_QUERY = `#graphql
             weight: metafield(namespace: "custom", key: "weight") {
                 value
             }
-            variants(first: 1) {
+            options {
+                name
+                values
+                optionValues {
+                    name
+                    id
+                }
+            }
+            selectedVariant: variantBySelectedOptions(selectedOptions: $selectedOptions) {
+                id
+            }
+            variants(first: 10) {
                 edges {
                     node {
+                        id
                         price {
                             amount
                         }
                         sku
+                        quantityAvailable
+                        availableForSale
+                        selectedOptions {
+                            name
+                            value
+                        }
                     }
                 }
             }
