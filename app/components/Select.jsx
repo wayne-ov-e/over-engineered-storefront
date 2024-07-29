@@ -22,7 +22,7 @@ function Select({ option }) {
                 defaultValue={defaultValue}
                 onChange={handleChange}
             >
-                {option.values.map(({ value, isAvailable, to, isActive }) => {
+                {option.values.map(({ value, isAvailable, to }) => {
                     return (
                         <option key={value} value={to} disabled={!isAvailable}>{value}</option>
                     );

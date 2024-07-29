@@ -73,6 +73,7 @@ export function Header({ header, isLoggedIn, cart }) {
                         className="logo col-span-2"
                         prefetch="intent"
                         to="/"
+                        onClick={closeNavigationMenu}
                     >
                         <span className="max-[900px]:hidden">{shop.name}</span>
                         <span className="min-[901px]:hidden">ov_e</span>

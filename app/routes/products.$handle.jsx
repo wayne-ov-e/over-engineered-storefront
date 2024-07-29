@@ -3,10 +3,8 @@ import styles from '~/styles/routes/products.$handle.module.css';
 import { json } from '@shopify/remix-oxygen';
 import ProgressiveImage from '~/components/ProgressiveImage.jsx';
 import Button from '~/components/Button.jsx'
-import highResImage from '~/assets/images/DWOS_TRAY_01.webp';
-import lowResImage from '~/assets/images/DWOS_TRAY_01_low-res.webp';
 import { formatPrice } from '~/utils';
-import { VariantSelector, getSelectedProductOptions, CartForm } from '@shopify/hydrogen';
+import { VariantSelector, getSelectedProductOptions, CartForm, Image } from '@shopify/hydrogen';
 import Select from '~/components/Select';
 
 export async function loader({ params, context, request }) {
@@ -39,7 +37,6 @@ export async function loader({ params, context, request }) {
         );
     }
 
-
     return json({
         product
     });
@@ -56,7 +53,7 @@ export default function ProductHandle() {
             {/* Desktop */}
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
-                    <div className='col-span-3 h-fit sticky mb-6 top-[9.302rem]'>
+                    <div className='col-span-3 h-fit sticky mb-12 top-[9.302rem]'>
                         <div className={`${styles.child_grid}`}>
                             <VariantSelector
                                 handle={product.handle}
@@ -106,21 +103,13 @@ export default function ProductHandle() {
                     </div>
 
                     <div
-                        className={`${styles.image_container} col-start-4 col-span-3 overflow-auto max-h-[100%]`}
+                        className={`${styles.image_container} col-start-4 col-span-3 overflow-auto max-h-[100%] mb-6`}
                     >
-                        <ProgressiveImage
-                            className="mb-6"
-                            lowResSrc={lowResImage}
-                            highResSrc={highResImage}
-                            alt="Descriptive Alt Text"
-                        />
-
-                        <ProgressiveImage
-                            className="mb-12"
-                            lowResSrc={lowResImage}
-                            highResSrc={highResImage}
-                            alt="Descriptive Alt Text"
-                        />
+                        {product.images.nodes.map(image => {
+                            return (
+                                <Image className='mb-6' data={image} key={image.id}></Image>
+                            );
+                        })}
                     </div>
 
                     <div className='col-span-1 h-fit sticky mb-12 top-[9.302rem]'>
@@ -143,6 +132,15 @@ const PRODUCT_QUERY = `#graphql
             handle
             vendor
             descriptionHtml
+            images(first: 10) {
+                nodes {
+                    altText
+                    height
+                    id
+                    url
+                    width
+                }
+            }
             productYear: metafield(namespace: "custom", key: "product_year") {
                 value
             }

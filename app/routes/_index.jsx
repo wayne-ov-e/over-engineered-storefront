@@ -18,7 +18,7 @@ export default function Index() {
             {/* Desktop */}
             <div className="max-[900px]:hidden">
                 <div className={`${styles.main_grid}`}>
-                    <div className='col-span-3 h-fit sticky top-[9.302rem]'>
+                    <div className='col-span-3 h-fit sticky top-[9.302rem] mb-14'>
                         <h2-p className='col-span-2'>The first release of DWOS<span className="align-super" style={{ fontSize: "smaller" }}>1</span>, providing a minimal and uncluttered solution for stationery organization.</h2-p>
 
                         <div className={`${styles.child_grid} mt-12`}>
@@ -26,7 +26,7 @@ export default function Index() {
                             <p>Accommodates up to 5 delicate tools or writing instruments beyond just pens and screwdrivers. Perfect for paint brushes, tweezers, knitting needles, or crafting tools.</p>
                         </div>
 
-                        <div className={`${styles.child_grid} mt-8 mb-14 justify-end`}>
+                        <div className={`${styles.child_grid} mt-8 justify-end`}>
                             <Link className='col-start-3 button' to='/products/dwos_tray_01' prefetch="intent">To Product <span className="align-super">↗</span></Link>
                         </div>
                     </div>

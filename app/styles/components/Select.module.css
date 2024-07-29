@@ -9,7 +9,7 @@
     padding-bottom: 1rem;
     padding-left: 0.75rem;
     color: var(--black);
-    border: .5px solid var(--black);
+    border: .5px solid var(--drizzle);
     line-height: 1;
     user-select: none;
     text-transform: uppercase;
@@ -18,7 +18,7 @@
 
 .select:focus {
     outline: none;
-    border-color: var(--black);
+    border-color: var(--drizzle);
     --tw-ring-color: none;
 }
 
