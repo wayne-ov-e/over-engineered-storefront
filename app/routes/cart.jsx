@@ -2,6 +2,7 @@ import { CartForm } from '@shopify/hydrogen';
 import { json, useLoaderData } from '@remix-run/react';
 import styles from '~/styles/routes/cart.module.css';
 import svg1 from '~/assets/images/DWOS_TRAY_01.svg';
+import { useMoney } from '@shopify/hydrogen';
 
 export async function action({ request, context }) {
     const { cart } = context;
@@ -43,7 +44,6 @@ export async function loader({ params, context }) {
 export default function Cart() {
     const cart = useLoaderData();
     const productsInCart = cart.lines.nodes;
-    console.log(cart)
 
     return (
         <div>
@@ -57,7 +57,29 @@ export default function Cart() {
                         <h3 className='col-start-5 text-right'>Total</h3>
                     </div>
 
-                    <div className={`${styles.child_grid_item_row} col-start-4 col-span-5 overflow-auto max-h-[100%]`}>
+                    {productsInCart.map((product) => {
+                        const { amountPerQuantity } = product.cost;
+
+                        return product.quantity > 0 ? (
+                            <div
+                                key={product.id}
+                                className={`${styles.child_grid_item_row} col-start-4 col-span-5 overflow-auto max-h-[100%] mb-8`}
+                            >
+                                <div className='col-start-1 col-span-1'>
+                                    <img src={product.merchandise.product.drawing.reference.image.url} alt="aha" draggable="false" />
+                                </div>
+                                <div className='col-start-3 col-span-1'>
+                                    <h4 className="mb-4">{product.merchandise.product.title}</h4>
+                                    <h4 className="mb-2">{ }</h4>
+                                    <h5>{product.merchandise.title}</h5>
+                                </div>
+                                <div className='col-start-5 text-right'>
+                                    <h4>$76.00 CAD</h4>
+                                </div>
+                            </div>
+                        ) : undefined;
+                    })}
+                    {/* <div className={`${styles.child_grid_item_row} col-start-4 col-span-5 overflow-auto max-h-[100%]`}>
                         <div className='col-start-1 col-span-1'>
                             <img src={svg1} alt="aha" draggable="false" />
                         </div>
@@ -68,7 +90,7 @@ export default function Cart() {
                         <div className='col-start-5 text-right'>
                             <h4>$76.00 CAD</h4>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
