@@ -1,5 +1,7 @@
 import { CartForm } from '@shopify/hydrogen';
-import { json } from '@remix-run/react';
+import { json, useLoaderData } from '@remix-run/react';
+import styles from '~/styles/routes/cart.module.css';
+import svg1 from '~/assets/images/DWOS_TRAY_01.svg';
 
 export async function action({ request, context }) {
     const { cart } = context;
@@ -20,7 +22,7 @@ export async function action({ request, context }) {
             result = await cart.removeLines(inputs.lineIds);
             break;
         default:
-            break;
+            throw new Response(null, { status: 500 });
     }
 
     // The Cart ID might change after each mutation, so update it each time.
@@ -29,5 +31,46 @@ export async function action({ request, context }) {
     return json(
         result,
         { status: 200, headers },
+    );
+}
+
+export async function loader({ params, context }) {
+    const { cart } = context;
+
+    return json(await cart.get());
+}
+
+export default function Cart() {
+    const cart = useLoaderData();
+    const productsInCart = cart.lines.nodes;
+    console.log(cart)
+
+    return (
+        <div>
+            {/* Desktop */}
+            <div className="max-[900px]:hidden">
+                <div className={`${styles.main_grid}`}>
+                    <div className={`${styles.child_grid_name_row} col-start-4 col-span-5 overflow-auto max-h-[100%] pb-2 mb-10`}>
+                        <h3>Product Image</h3>
+                        <h3 className='col-start-3'>Unique Identifier</h3>
+                        <h3 className='col-start-4'>Quantity</h3>
+                        <h3 className='col-start-5 text-right'>Total</h3>
+                    </div>
+
+                    <div className={`${styles.child_grid_item_row} col-start-4 col-span-5 overflow-auto max-h-[100%]`}>
+                        <div className='col-start-1 col-span-1'>
+                            <img src={svg1} alt="aha" draggable="false" />
+                        </div>
+                        <div className='col-start-3 col-span-1'>
+                            <h4 className="mb-3">DWOS_TRAY_01</h4>
+                            <h4>$76.00 CAD</h4>
+                        </div>
+                        <div className='col-start-5 text-right'>
+                            <h4>$76.00 CAD</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }

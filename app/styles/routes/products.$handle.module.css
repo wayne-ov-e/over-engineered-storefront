@@ -21,10 +21,6 @@
     column-gap: 2rem;
 }
 
-.image_container::-webkit-scrollbar {
-    display: none;
-}
-
 .button {
     text-align: left;
     font-family: 'Neue Machina';

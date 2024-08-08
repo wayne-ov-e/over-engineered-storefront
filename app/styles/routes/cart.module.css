@@ -1,0 +1,32 @@
+/* Index page styles */
+.main_grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    /* Creates 8 columns */
+    column-gap: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    height: 100%;
+}
+
+.child_grid_name_row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 2rem;
+    color: var(--drizzle);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 24px */
+    border-bottom: 0.5px solid var(--drizzle);
+    user-select: none;
+}
+
+.child_grid_item_row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 2rem;
+    /* 24px */
+    user-select: none;
+}

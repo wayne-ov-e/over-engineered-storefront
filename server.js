@@ -210,6 +210,16 @@ const CART_QUERY_FRAGMENT = `#graphql
           handle
           title
           id
+          drawing: metafield(namespace: "custom", key: "drawing") {
+            value
+            reference {
+              ... on MediaImage {
+                image {
+                  url
+                }
+              }
+            }
+          }
         }
         selectedOptions {
           name
