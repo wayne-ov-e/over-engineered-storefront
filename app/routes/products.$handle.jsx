@@ -202,3 +202,22 @@ const PRODUCT_QUERY = `#graphql
         }
     }
 `;
+
+const PRODUCT_IMAGE_QUERY = `#graphql
+    query product(
+        $handle: String!
+        $selectedOptions: [SelectedOptionInput!]!
+    ) {
+        product(handle: $handle) {
+            images(first: 10) {
+                nodes {
+                    altText
+                    height
+                    id
+                    url
+                    width
+                }
+            }
+        }
+    }
+`;
