@@ -1,7 +1,6 @@
 import { CartForm } from '@shopify/hydrogen';
 import { json, useFetcher, useLoaderData, redirect } from '@remix-run/react';
 import styles from '~/styles/routes/cart.module.css';
-import svg1 from '~/assets/images/DWOS_TRAY_01.svg';
 import { formatPrice } from '~/utils';
 
 export async function action({ request, context }) {
