@@ -107,7 +107,7 @@ export default function ProductHandle() {
                     >
                         {product.images.nodes.map(image => {
                             return (
-                                <Image className='mb-6' data={image} key={image.id} loading='lazy'></Image>
+                                <Image className='mb-6' data={image} key={image.id}></Image>
                             );
                         })}
                     </div>
@@ -135,7 +135,7 @@ export default function ProductHandle() {
                 <div className='col-span-5 mt-[24px]'>
                     {product.images.nodes.map(image => {
                         return (
-                            <Image className='mb-[24px]' data={image} key={image.id} loading='lazy'></Image>
+                            <Image className='mb-[24px]' data={image} key={image.id}></Image>
                         );
                     })}
                 </div>
