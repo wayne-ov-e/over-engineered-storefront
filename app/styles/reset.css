@@ -88,7 +88,7 @@ h5 {
     color: var(--drizzle);
 
     @media (max-width: 900px) {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
 
@@ -97,7 +97,7 @@ p {
     line-height: 120%;
 
     @media (max-width: 900px) {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -181,4 +181,13 @@ code {
     border-radius: 4px;
     font-family: monospace;
     padding: 0.25rem;
+}
+
+.para-2 {
+    margin-top: 0.75rem;
+
+    @media (max-width: 900px) {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
 }

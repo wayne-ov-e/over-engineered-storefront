@@ -38,13 +38,35 @@
 
     @media (max-width: 900px) {
         font-size: 1.2rem;
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-left: 1rem;
     }
 }
 
 .button:hover {
     text-decoration: none;
+}
+
+.mobile_grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 1.6rem;
+}
+
+.mobile_button_menu {
+    position: fixed;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.6rem;
+    left: 0;
+    bottom: 2rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    background-color: var(--cloud-dancer);
 }
 
 @media only screen and (max-width: 1440px) {

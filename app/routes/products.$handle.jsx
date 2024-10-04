@@ -107,7 +107,7 @@ export default function ProductHandle() {
                     >
                         {product.images.nodes.map(image => {
                             return (
-                                <Image className='mb-6' data={image} key={image.id}></Image>
+                                <Image className='mb-6' data={image} key={image.id} loading='lazy'></Image>
                             );
                         })}
                     </div>
@@ -115,6 +115,63 @@ export default function ProductHandle() {
                     <div className='col-span-1 h-fit sticky mb-12 top-[9.302rem]'>
                         <p>We designed a versatile modular storage solution that seamlessly integrates into various living areas. Offering endless configuration possibilities, it keeps your belongings organized and accessible, maximizing space and adapting to your unique style and needs.</p>
                     </div>
+                </div>
+            </div>
+
+            {/* Mobile */}
+            <div className={`${styles.mobile_grid} min-[901px]:hidden ml-[1.6rem] mr-[1.6rem] pt-[8.4rem] pb-[2rem] relative`}>
+                <div className='col-span-2'>
+                    <h4>{product.title}</h4>
+                    <h4 className="mt-[12px]">${price}</h4>
+                </div>
+
+                <div className='col-span-3'>
+                    <h5>{product.material?.value}</h5>
+                    <h5>{product.secondaryMaterial?.value}</h5>
+                    <h5>{product.dimensions?.value}</h5>
+                    <h5 className='mt-[8px]'>Domestic Workspace<br></br>Organization System<br></br>(DWOS)</h5>
+                </div>
+
+                <div className='col-span-5 mt-[24px]'>
+                    {product.images.nodes.map(image => {
+                        return (
+                            <Image className='mb-[24px]' data={image} key={image.id} loading='lazy'></Image>
+                        );
+                    })}
+                </div>
+
+                <div className={`col-span-5`} dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
+
+                <h5 className='col-span-5 mt-[32px] mb-[89px]'>Shipped within 2 business days</h5>
+
+                <div className={`${styles.mobile_button_menu}`}>
+                    <VariantSelector
+                        handle={product.handle}
+                        options={product.options}
+                        variants={product.variants}
+                    >
+                        {({ option }) => (
+                            <>
+                                <Select option={option}></Select>
+                            </>
+                        )}
+                    </VariantSelector>
+                    <CartForm
+                        route="/cart"
+                        action={CartForm.ACTIONS.LinesAdd}
+                        inputs={{
+                            lines: [
+                                {
+                                    merchandiseId: product.selectedVariant?.id,
+                                },
+                            ]
+                        }}
+                    >
+                        <button
+                            className={`${styles.button}`}
+                            text="add to cart"
+                        >add to cart</button>
+                    </CartForm>
                 </div>
             </div>
         </div>
