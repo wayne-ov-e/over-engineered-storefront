@@ -153,11 +153,11 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
                         key={item.id}
                         onMouseEnter={item.title == 'Products' ? openNavigationMenu : undefined}
                         prefetch="intent"
-                        to={item.title == 'Products' ? currentURL : url}
+                        to={item.title === 'Products' ? currentURL : url}
                     >
                         <div className={`relative ${item.title == 'Products' && 'mr-[0.4em]'} `}>
                             {item.title}
-                            {item.title == 'Products' && (<div className="absolute text-[0.6em] top-[-0.8em] right-[-0.8em]">{productCount}</div>)}
+                            {item.title === 'Products' && (<div className="absolute text-[0.6em] top-[-0.8em] right-[-0.8em]">{productCount}</div>)}
                         </div>
                     </NavLink>
                 );
