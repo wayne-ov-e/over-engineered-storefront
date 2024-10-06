@@ -171,13 +171,9 @@ export function HeaderMenu({ menu, primaryDomainUrl, viewport, navOpen, setNavOp
  */
 function CartButton({ cart }) {
     return (
-        <Suspense>
-            <Await resolve={cart}>
-                <NavLink className={`${styles.header_menu_item} col-start-8 flex justify-end relative mr-[0.5em] max-[900px]:mr-15`} to="/cart" prefetch='intent' end>
-                    <div>Cart<div className={`absolute text-[0.6em] top-[-1em] right-[-0.8em]`}>{cart?.totalQuantity || 0}</div></div>
-                </NavLink>
-            </Await>
-        </Suspense>
+        <NavLink className={`${styles.header_menu_item} col-start-8 flex justify-end relative mr-[0.5em] max-[900px]:mr-15`} to="/cart" prefetch='intent' end>
+            <div>Cart<div className={`absolute text-[0.6em] top-[-1em] right-[-0.8em]`}>{cart?.totalQuantity || 0}</div></div>
+        </NavLink>
     );
 }
 
