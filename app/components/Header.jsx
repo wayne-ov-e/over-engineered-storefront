@@ -22,6 +22,7 @@ export function Header({ header, isLoggedIn, cart }) {
         }
 
         setNavOpen(false);
+        document.body.style.overflow = navOpen ? 'auto' : 'hidden';
     }
 
     function isMobile() {

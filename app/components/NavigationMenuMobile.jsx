@@ -1,8 +1,8 @@
 import styles from '~/styles/components/NavigationMenuMobile.module.css';
-import { NavLink } from '@remix-run/react';
+import { NavLink, Link } from '@remix-run/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function NavigationMenuMobile({ menu, navOpen, products }) {
+export default function NavigationMenuMobile({ menu, navOpen, products, closeNavigationMenu }) {
     const menuMotion = {
         initial: {
             scaleY: 0,
@@ -84,13 +84,15 @@ export default function NavigationMenuMobile({ menu, navOpen, products }) {
                             {products.nodes.map((product) => {
                                 return (
                                     <div className='overflow-hidden' key={product.id}>
-                                        <motion.div
-                                            className={`${styles.mobile_menu_item_row} pt-[0.6rem] pb-[0.6rem] flex justify-between`}
-                                            variants={productLinkMotion}
-                                        >
-                                            <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
-                                            <h3 className={`translate-y-[0.15rem] ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
-                                        </motion.div>
+                                        <Link to={`/products/${product.title}`} prefetch='intent' onClick={closeNavigationMenu}>
+                                            <motion.div
+                                                className={`${styles.mobile_menu_item_row} pt-[0.6rem] pb-[0.6rem] flex justify-between`}
+                                                variants={productLinkMotion}
+                                            >
+                                                <h4 className='translate-y-[0.15rem]'>{product.title}</h4>
+                                                <h3 className={`translate-y-[0.15rem] ${product.productionStage.value == 'In stock' ? 'text-orange-016-c' : ''}`}>{product.productionStage.value}</h3>
+                                            </motion.div>
+                                        </Link>
                                     </div>
                                 );
                             })}

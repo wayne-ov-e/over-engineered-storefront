@@ -132,7 +132,7 @@ export default function ProductHandle() {
                     <h5 className='mt-[8px]'>Domestic Workspace<br></br>Organization System<br></br>(DWOS)</h5>
                 </div>
 
-                <div className='col-span-5 mt-[24px]'>
+                <div className='col-span-5 mt-[32px]'>
                     {product.images.nodes.map(image => {
                         return (
                             <Image className='mb-[24px]' data={image} key={image.id}></Image>
@@ -140,7 +140,7 @@ export default function ProductHandle() {
                     })}
                 </div>
 
-                <div className={`col-span-5`} dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
+                <div className={`col-span-5 mt-[36px]`} dangerouslySetInnerHTML={{ __html: descriptionHtml }}></div>
 
                 <h5 className='col-span-5 mt-[32px] mb-[89px]'>Shipped within 2 business days</h5>
 

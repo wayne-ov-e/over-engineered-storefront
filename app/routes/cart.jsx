@@ -10,7 +10,6 @@ export async function action({ request, context }) {
     const { action, inputs } = CartForm.getFormInput(formData);
 
     let result;
-    console.log(inputs)
 
     switch (action) {
         case CartForm.ACTIONS.LinesAdd:
