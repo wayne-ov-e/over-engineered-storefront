@@ -1,0 +1,57 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    border: 1px solid var(--drizzle);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity_input {
+    background: none !important;
+    border: none !important;
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: 'Neue Machina', 'NB International', sans-serif;
+    font-size: 0.75rem !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100% !important;
+    /* 24px */
+
+    @media (max-width: 900px) {
+        font-size: 1.4rem !important;
+    }
+}
+
+.quantity_input[type=number]::-webkit-outer-spin-button,
+.quantity_input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity_input:focus {
+    outline: none !important;
+    --tw-ring-color: none !important;
+}
+
+.minus,
+.plus {
+    padding: 1rem 0.75rem 1rem 0.75rem;
+    line-height: 100%;
+    font-family: 'Neue Machina', 'NB International', sans-serif;
+    font-size: 0.75rem !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100% !important;
+    /* 24px */
+
+    @media (max-width: 900px) {
+        font-size: 1.4rem !important;
+    }
+}
+
+.plus:hover,
+.minus:hover {
+    cursor: pointer;
+}

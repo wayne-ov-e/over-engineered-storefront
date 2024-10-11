@@ -2,6 +2,7 @@ import { CartForm } from '@shopify/hydrogen';
 import { json, useFetcher, useLoaderData, redirect } from '@remix-run/react';
 import styles from '~/styles/routes/cart.module.css';
 import { formatPrice } from '~/utils';
+import QuantityAdjust from '~/components/QuantityAdjust';
 
 export async function action({ request, context }) {
     const { cart } = context;
@@ -55,6 +56,18 @@ export default function Cart() {
         }
     });
 
+    const updateQuantity = (event, lineId) => ({
+        action: CartForm.ACTIONS.LinesUpdate,
+        inputs: {
+            lines: [
+                {
+                    id: lineId,
+                    quantity: parseInt(event.target.value),
+                },
+            ]
+        }
+    });
+
     const handleCheckout = () => {
         window.location.href = cart.checkoutUrl;
     }
@@ -63,7 +76,7 @@ export default function Cart() {
         <div>
             {/* Desktop */}
             <div className="max-[900px]:hidden">
-                {cart ? (
+                {cart.totalQuantity > 0 ? (
                     <div className={`${styles.main_grid}`}>
                         <div className={`${styles.child_grid_name_row} col-start-4 col-span-5 overflow-auto max-h-[100%] pb-2 mb-10`}>
                             <h3>Product Image</h3>
@@ -86,6 +99,9 @@ export default function Cart() {
                                         <h4 className="mb-2">-</h4>
                                         <h4 className="mb-2">${formatPrice(product.cost.amountPerQuantity.amount)} {product.cost.amountPerQuantity.currencyCode}</h4>
                                         <h5>{product.merchandise.title}</h5>
+                                    </div>
+                                    <div className='col-start-4'>
+                                        <QuantityAdjust fetcher={fetcher} quantity={product.quantity} lineId={product.id} updateQuantity={updateQuantity}></QuantityAdjust>
                                     </div>
                                     <div className='col-start-5 text-right'>
                                         <h4>${formatPrice(product.cost.totalAmount.amount)} {product.cost.totalAmount.currencyCode}</h4>
